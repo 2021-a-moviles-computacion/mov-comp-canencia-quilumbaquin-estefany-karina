@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">moviles01</string>
-    <string name="Hola_Mundo">Hola</string>
-    <string name="edit_mensaje">Enter a message</string>
+    <string name="Hola_Mundo">Naruto</string>
 
 </resources>
