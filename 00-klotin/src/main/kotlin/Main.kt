@@ -162,14 +162,51 @@ fun main() {
     //1) Devuelve el acumulado => 0
     //En que valor empieza => 0
     //{1,2,3,4,5}
-    //0=0+1 -> Iteración 1
-    //1=1+2
-    //3=3+3
+    //0=0+1 -> Iteración 1 0+1=1
+    //1=1+2 -> Iteracion 2 1+2=3
+    //3=3+3 -> It 3 3+3=6
     //6=6+4
     //10=10+5
     //15       -> Iteración 5
+    //UtilimoAcumulado = 15
 
-    //min 15:40
+    val respuestaReduce: Int = arregloDinamico
+        .reduce{ //acumulado =0 -->SIEMPRE EMPIEZA EN 0
+        acumulado: Int, valorActual: Int -> //logica del negocio
+        return@reduce acumulado+valorActual
+    }
+    println(respuestaReduce)//78
+
+    //100
+    ////{1,2,3,4,5}
+
+    val arregloDanio = arrayListOf<Int>(12,15,8,10)
+    val respuestaReduceFold = arregloDanio
+        .fold(
+            100,
+            {
+                acumulado, valorActualIteracion ->
+                return@fold acumulado - valorActualIteracion
+        })
+    println(respuestaReduceFold)
+
+    val vidaActual: Double = arregloDinamico
+        .map{it * 2.3} //arreglo
+        .filter { it > 20 } //arreglo
+        .fold(100.00, {acc, i -> acc -i})//valor
+        .also { println(it) }//ejecutar codigo extra
+    println("valor vida actual ${vidaActual}")//3.4
+
+    val ejemploUno = suma(1,2)
+    val ejemploDos = suma(null,2)
+    val ejemploTres = suma(1,null)
+
+    println(ejemploUno.sumar())
+    println(suma.historialSumas)
+    println(ejemploDos.sumar())
+    println(suma.historialSumas)
+    println(ejemploTres.sumar())
+    println(suma.historialSumas)
 
 
 } // FIN bloque MAIN
@@ -191,5 +228,79 @@ fun calcularSueldo(
         return sueldo * (100 / tasa)
     } else {
         return sueldo * (100 / tasa) + bonoEspecial
+    }
+}
+
+
+abstract class NumeroJava {
+    protected  val numeroUno: Int
+    private val numeroDos: Int
+    constructor(
+        uno: Int, //Parametros requeridos
+        dos: Int //parametros requeridos
+    ){
+        numeroUno = uno
+        numeroDos = dos
+        println("Inicializar")
+    }
+}
+// instancia.numeroUno
+// instancia.numeroDos
+abstract class Numeros(//Constructor primario
+    protected var numeroUno: Int,
+    protected  var numeroDos: Int
+    ){
+        init{//Bloque inicio del cosntructor primario
+        println("inicializar")
+        }
+}
+
+class suma(//contructor primario
+    uno: Int,//parametro requerido
+    dos: Int,//parametro requerido
+): Numeros( //costructor papa (super)
+    uno,
+    dos,
+){
+    init{
+        this.numeroUno
+        this.numeroDos
+        // x->this.uno --> NO EXISTE
+        // x --> this.dos --> NO EXISTE
+    }
+
+    constructor( //segundo contructor
+        uno: Int?, //parametros
+        dos: Int //parametros
+    ) : this ( //llamado constructor primario
+        if (uno == null) 0 else uno,
+        dos
+            )
+
+    constructor(//tercer cosntructor
+        uno: Int,// parametros
+        dos: Int?//parametros
+    ) : this( //llamada contructor primario
+        uno,
+        if(dos == null) 0 else dos
+    )
+
+    //public fun sumar(): Int{
+    fun sumar(): Int{
+        //val total: Int = this.numeroUno + this.numeroDos
+        val total: Int = numeroUno + numeroDos
+        agregarHistorial(total)
+        return total
+    }
+
+    //SINGLETON
+    companion object{
+        val historialSumas = arrayListOf<Int>()
+
+        fun agregarHistorial(valorNuevaSuma: Int){
+            //this.historialSumas.add(valorNuevaSuma)
+            historialSumas.add(valorNuevaSuma)
+            println(historialSumas)
+        }
     }
 }
