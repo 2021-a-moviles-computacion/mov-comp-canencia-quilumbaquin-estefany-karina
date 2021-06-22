@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14f498f1-69e2-44a6-864a-e9f8f534f7c3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movileso1/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../movileso1/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../movileso1/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../movileso1/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Moviles01/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moviles01/.idea/gradle.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,17 +41,6 @@
     <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainKt" />
       <module name="clases-klotin.main" />
@@ -78,6 +65,7 @@
       <workItem from="1623602331728" duration="8226000" />
       <workItem from="1623721490702" duration="2636000" />
       <workItem from="1624143501727" duration="7615000" />
+      <workItem from="1624377923597" duration="609000" />
     </task>
     <servers />
   </component>
