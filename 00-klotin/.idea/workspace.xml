@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14f498f1-69e2-44a6-864a-e9f8f534f7c3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Moviles01/app/src/main/java/com/example/moviles01/AcicloVida.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Moviles01/app/src/main/res/layout/activity_aciclo_vida.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Moviles01/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moviles01/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Moviles01/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moviles01/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Moviles01/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Moviles01/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +65,7 @@
       <workItem from="1623602331728" duration="8226000" />
       <workItem from="1623721490702" duration="2636000" />
       <workItem from="1624143501727" duration="7615000" />
-      <workItem from="1624377923597" duration="1203000" />
+      <workItem from="1624377923597" duration="1910000" />
     </task>
     <servers />
   </component>

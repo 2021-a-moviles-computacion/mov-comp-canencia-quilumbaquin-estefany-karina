@@ -11,19 +11,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //this.findViewbyId()..Clase
-        val botenIrCicloVida = findViewById<Button>(
-            R.id.btn_ciclo_vida
-        )
-        botenIrCicloVida
+        val botonIrCicloVida = findViewById<Button>(
+            R.id.btn_ciclo_vida)
+
+        /*botenIrCicloVida
             .setOnClickListener {
-                abrirCicloVida()
+                abrirCicloVida()*/
+        botonIrCicloVida.setOnClickListener{abrirActividad(AcicloVida::class.java)}
+            val botonIrListView = findViewById<Button>(
+                R.id.btn_ir_list_view
+            )
+            botonIrListView.setOnClickListener{abrirActividad(BListView::class.java)
+
+
             }
     }
 
-    fun abrirCicloVida(){
+    fun abrirActividad(
+        clase: Class <*>
+    ){
         val intentExplicito= Intent( //intent es una calse, empieza con una laetra mayuscula
             this,
-            AcicloVida::class.java
+            //AcicloVida::class.java
+        clase
         )
         startActivity(intentExplicito)
     }
