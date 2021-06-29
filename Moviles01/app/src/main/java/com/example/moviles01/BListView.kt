@@ -57,7 +57,7 @@ class BListView : AppCompatActivity() {
 
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
         val id = info.position
-        posicionItemSeleccionado = is
+        posicionItemSeleccionado = id
         Log.i("List-view", "Liste view ${posicionItemSeleccionado}")
         Log.i("List-view", "Entrenador ${BBaseDatosMemoria.arregloBEntrenador[id]}")
     }

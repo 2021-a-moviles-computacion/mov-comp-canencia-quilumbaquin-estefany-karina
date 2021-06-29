@@ -21,10 +21,12 @@ class MainActivity : AppCompatActivity() {
             val botonIrListView = findViewById<Button>(
                 R.id.btn_ir_list_view
             )
-            botonIrListView.setOnClickListener{abrirActividad(BListView::class.java)
+            botonIrListView.setOnClickListener{abrirActividad(BListView::class.java)}
 
-
-            }
+            val botonIrIntent = findViewById<Button>(
+                R.id.btn_ir_intent
+            )
+        botonIrIntent.setOnClickListener {abrirActividad(CIntentExplicitoParametros::class.java)}
     }
 
     fun abrirActividad(
@@ -35,6 +37,19 @@ class MainActivity : AppCompatActivity() {
             //AcicloVida::class.java
         clase
         )
+        startActivity(intentExplicito)
+    }
+
+    fun abrirActividadConParametros(
+        clase: Class<*>
+    ){
+        val intentExplicito = Intent(
+            this,
+            clase
+        )
+        intentExplicito.putExtra("nombre","Karina")
+        intentExplicito.putExtra("apellido","Canencia")
+        intentExplicito.putExtra("edad","23")
         startActivity(intentExplicito)
     }
 }

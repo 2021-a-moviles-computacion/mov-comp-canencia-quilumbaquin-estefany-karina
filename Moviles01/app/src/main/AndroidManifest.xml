@@ -9,12 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Moviles01">
-        <activity android:name=".BBaseDatosMemoriaa"></activity>
+        <activity android:name=".CIntentExplicitoParametros"></activity>
         <activity android:name=".BListView">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.SEND" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mineType="Text/plain" />
             </intent-filter>
         </activity>
         <activity android:name=".AcicloVida">
