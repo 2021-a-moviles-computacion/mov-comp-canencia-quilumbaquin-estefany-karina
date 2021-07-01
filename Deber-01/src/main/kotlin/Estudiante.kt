@@ -1,4 +1,5 @@
 import com.sun.jdi.BooleanType
+import java.text.DateFormat
 import java.util.*
 
 class Estudiante(
@@ -6,6 +7,6 @@ class Estudiante(
     var Edad: Int,
     var segunda: Boolean,
     var calificacion: Double,
-    var fechaIngreso: Int
+    var fechaIngreso: Date = Date()
         ) {
 }
