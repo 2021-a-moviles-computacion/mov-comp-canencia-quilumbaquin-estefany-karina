@@ -4,8 +4,8 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class BEntrenador(
-        val nombre: String,
-        val descripcion: String
+        val nombre: String?,
+        val descripcion: String?
 ) :Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -17,11 +17,13 @@ class BEntrenador(
         return "${nombre} - ${descripcion}"
     }
 
-    override fun writeToParcel(dest: Parcel?, flags: Int) {
-        TODO("Not yet implemented")
+    override fun writeToParcel(parcel: Parcel?, flags: Int) {
+        parcel?.writeString(nombre)
+        parcel?.writeString(descripcion)
+
     }
     override fun describeContents(): Int {
-        TODO("Not yet implemented")
+        return 0;
     }
 
     companion object CREATOR : Parcelable.Creator<BEntrenador> {

@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         intentExplicito.putExtra("nombre","Karina")
         intentExplicito.putExtra("apellido","Canencia")
         intentExplicito.putExtra("edad","23")
+        intentExplicito.putExtra("entrenador", BEntrenador("Karina", "Canencia"))
         startActivity(intentExplicito)
     }
 }

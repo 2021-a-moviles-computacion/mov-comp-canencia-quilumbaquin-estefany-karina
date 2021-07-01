@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.moviles01">
 
     <application
@@ -16,7 +17,8 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mineType="Text/plain" />
+                <data android:mimeType="Text/plain"
+                    tools:ignore="AppLinkUrlError" />
             </intent-filter>
         </activity>
         <activity android:name=".AcicloVida">
