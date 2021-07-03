@@ -2,11 +2,20 @@
 fun main() {
     var DatosEstudiante: Estudiante
     var datosProfesor: Profesor
-    var nombre: String
+    //var nombre: String
     //nombre = readLine().toString()
-    DatosEstudiante = Estudiante("EE", 12,true, 6.7)
+    var accion: String
+    println("Ingrese una acción")
+    accion = readLine().toString()
 
-    println(DatosEstudiante.Nombre)
-    println(DatosEstudiante.fechaIngreso)
 
+    if(accion == "Crear"){}
+    if(accion == "Eliminar"){}
+    if(accion == "Ingresar"){
+        imprimir()
+    }
+    if(accion == "Actualizar"){
+        println("Se ha actualizado la lista")
+    }
 }
+
