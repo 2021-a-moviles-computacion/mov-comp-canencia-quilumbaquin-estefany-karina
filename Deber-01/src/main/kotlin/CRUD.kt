@@ -52,11 +52,20 @@ fun read(args: ArrayList<Estudiante> = arrayListOf()) {
 
 fun update(args: ArrayList<Estudiante> = arrayListOf()) {
     var lineNumber = 0
-    var newString = ""
+    var newString =""
+    var new :String
+    var i :Int
+
+    print("ingresar id:  ")
+    i = readLine()?.toInt() as Int
+
+    print("Nombre: ")
+    new= readLine().toString()
+
     File("data.txt").forEachLine {
         ++lineNumber
         println("$lineNumber: $it")
-        newString = it.replace("JJ", "NN")
+        newString = args[i].Nombre.replace(args[i].Nombre, new)
         println("New string : $newString")
     }
     File("data.txt").writeText(newString)

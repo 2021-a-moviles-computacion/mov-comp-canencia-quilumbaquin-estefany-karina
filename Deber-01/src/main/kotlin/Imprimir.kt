@@ -29,11 +29,11 @@ fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()) {
     var ingreso = readLine().toString()
 
     while (ingreso == "si") {
-        println("Nombres:  ")
+        print("Nombres:  ")
         nombre = readLine().toString()
-        println("Edad:  ")
+        print("Edad:  ")
         edad = readLine()?.toInt() as Int
-        println("Calificación  ")
+        print("Calificación  ")
         nota = readLine()?.toDouble() as Double
 
         estudiante.add(Estudiante(nombre, edad, true, nota))
