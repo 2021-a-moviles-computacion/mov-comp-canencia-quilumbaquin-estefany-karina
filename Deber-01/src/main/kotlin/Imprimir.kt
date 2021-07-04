@@ -1,18 +1,23 @@
 fun imprimir(estudiante: ArrayList<Estudiante> = arrayListOf()) {
     var profesor: Profesor
     var i=Int
-    //var estudiante: ArrayList<Estudiante> = arrayListOf()
-    //estudiante.add(Estudiante("sss",12,true,2.4))
-    //estudiante.add(Estudiante("ddsd",12,true,2.4))
 
-    println("LISTA DE ESTUDIANTES")
+    profesor=(Profesor("Esteban Lopez","Redes",34,'S',"2380453"))
+    println("NombreProfesor:   ${profesor.nombre}")
+    println("Materia:          ${profesor.materia}")
+    println("Edad:             ${profesor.Edad}")
+    println("Estado Civil:     ${profesor.EstadoCivil}")
+    println("Teléfono:         ${profesor.telefono}")
+
+
+    println("\nLISTA DE ESTUDIANTES\n")
     for(i in estudiante.indices){
         println(estudiante[i].Nombre+"     "+estudiante[i].Edad+"     "+estudiante[i].segunda+"    "+
         estudiante[i].calificacion+"     "+estudiante[i].fechaIngreso)
     }
 }
 
-fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()){
+fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()) {
     val i: Int
     //var estudiante: ArrayList<Estudiante> = arrayListOf()
     var nombre: String
@@ -20,10 +25,10 @@ fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()){
     var nota: Double
 
     println("INGRESAR DATOS DEL ESTUDIANTE")
-    println("desea ingresar datos")
+    println("\n¿Desea ingresar datos?")
     var ingreso = readLine().toString()
 
-    while (ingreso == "si"){
+    while (ingreso == "si") {
         println("Nombres:  ")
         nombre = readLine().toString()
         println("Edad:  ")
@@ -33,11 +38,9 @@ fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()){
 
         estudiante.add(Estudiante(nombre, edad, true, nota))
 
-        println("desea ingresar datos")
+        println("\n¿Desea ingresar datos?")
         ingreso = readLine().toString()
     }
-    imprimir(estudiante)
-
 }
 
 

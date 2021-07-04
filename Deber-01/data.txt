@@ -1,0 +1,2 @@
+kari      23     true     4.5     Sun Jul 04 14:38:35 COT 2021
+dani      24     true     6.6     Sun Jul 04 14:38:44 COT 2021

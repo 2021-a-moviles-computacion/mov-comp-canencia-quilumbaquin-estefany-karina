@@ -9,6 +9,4 @@ class Estudiante(
     var calificacion: Double,
     var fechaIngreso: Date = Date()
         ) {
-
-
     }
