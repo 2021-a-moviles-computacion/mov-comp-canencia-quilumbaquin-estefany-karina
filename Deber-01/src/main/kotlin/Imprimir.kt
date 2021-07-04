@@ -1,40 +1,43 @@
-fun imprimir() {
+fun imprimir(estudiante: ArrayList<Estudiante> = arrayListOf()) {
     var profesor: Profesor
     var i=Int
-    var estudiante: ArrayList<Estudiante> = arrayListOf()
-
-    estudiante.add(Estudiante("sss",12,true,2.4))
-    estudiante.add(Estudiante("ddsd",12,true,2.4))
+    //var estudiante: ArrayList<Estudiante> = arrayListOf()
+    //estudiante.add(Estudiante("sss",12,true,2.4))
+    //estudiante.add(Estudiante("ddsd",12,true,2.4))
 
     println("LISTA DE ESTUDIANTES")
-    for(i in 0 ..1){
+    for(i in estudiante.indices){
         println(estudiante[i].Nombre+"     "+estudiante[i].Edad+"     "+estudiante[i].segunda+"    "+
         estudiante[i].calificacion+"     "+estudiante[i].fechaIngreso)
     }
 }
 
-fun ingresarEstudiante(){
+fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()){
     val i: Int
-    val estudiante: Estudiante
-    val nombre: String = readLine().toString()
-    val edad: Int = readLine()?.toInt() as Int
-    val segunda: Boolean
-    val nota: Double = readLine()?.toDouble() as Double
-    val mat: String = readLine().toString()
+    //var estudiante: ArrayList<Estudiante> = arrayListOf()
+    var nombre: String
+    var edad: Int
+    var nota: Double
 
     println("INGRESAR DATOS DEL ESTUDIANTE")
+    println("desea ingresar datos")
+    var ingreso = readLine().toString()
 
-    println("Nombres:  "+ nombre)
-    println("Edad:  "+ edad)
-    println("Es segunda Matricula?:  "+mat)
-    println("Calificación  "+ nota)
+    while (ingreso == "si"){
+        println("Nombres:  ")
+        nombre = readLine().toString()
+        println("Edad:  ")
+        edad = readLine()?.toInt() as Int
+        println("Calificación  ")
+        nota = readLine()?.toDouble() as Double
 
-    if(mat == "si"){
-        segunda = true
-    }else if (mat == "no"){
-        segunda=false }
+        estudiante.add(Estudiante(nombre, edad, true, nota))
 
-    //estudiante = Estudiante(readLine().toString(), readLine()?.toInt() as Int, true, readLine()?.toDouble() as Double)
+        println("desea ingresar datos")
+        ingreso = readLine().toString()
+    }
+    imprimir(estudiante)
+
 }
 
 

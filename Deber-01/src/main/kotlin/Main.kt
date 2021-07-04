@@ -1,6 +1,6 @@
 
 fun main() {
-    var DatosEstudiante: Estudiante
+    var Datosestudiante: ArrayList<Estudiante> = arrayListOf()
     var datosProfesor: Profesor
     //var nombre: String
     //nombre = readLine().toString()
@@ -12,7 +12,7 @@ fun main() {
     if(accion == "Crear"){}
     if(accion == "Eliminar"){}
     if(accion == "Ingresar"){
-        imprimir()
+        ingresarEstudiante(Datosestudiante)
     }
     if(accion == "Actualizar"){
         println("Se ha actualizado la lista")
