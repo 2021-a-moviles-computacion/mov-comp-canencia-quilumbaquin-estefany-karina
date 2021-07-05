@@ -46,10 +46,11 @@ fun read(args: ArrayList<Estudiante> = arrayListOf()) {
 fun update(args: ArrayList<Estudiante> = arrayListOf()) {
     var lineNumber = 0
     var newString = ""
+    var x :String = args[0].Nombre
     File("data.txt").forEachLine {
         ++lineNumber
         println("$lineNumber: $it")
-        newString = args[0].Nombre.replace(args[0].Nombre, "NN")
+        newString = x.replace(x, "NN")
         println("New string : $newString")
     }
     File("data.txt").writeText(newString)
