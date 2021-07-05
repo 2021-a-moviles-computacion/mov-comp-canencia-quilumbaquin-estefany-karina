@@ -1,3 +1,4 @@
+import java.io.File
 import java.text.DateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -48,6 +49,11 @@ fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()) {
         println("\n¿Desea ingresar datos?")
         ingreso = readLine().toString()
     }
+}
+fun añadir(args: java.util.ArrayList<Estudiante> = arrayListOf()) {
+    for(i in args.indices){
+        File("data.txt").appendText("\n"+args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
+                "     "+args[i].calificacion +"     "+ args[i].fechaRegistro)}
 }
 
 

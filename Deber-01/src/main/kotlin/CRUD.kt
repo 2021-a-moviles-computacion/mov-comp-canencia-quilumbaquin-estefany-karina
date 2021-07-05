@@ -1,4 +1,5 @@
-import java.io.File
+import java.io.*
+import java.util.*
 
 
 fun create(args: ArrayList<Estudiante> = arrayListOf()) {
@@ -43,24 +44,39 @@ fun read(args: ArrayList<Estudiante> = arrayListOf()) {
     }
 }
 
-fun update(args: ArrayList<Estudiante> = arrayListOf()) {
-    var lineNumber = 0
-    var newString = ""
-    var x :String = args[0].Nombre
-    File("data.txt").forEachLine {
-        ++lineNumber
-        println("$lineNumber: $it")
-        newString = x.replace(x, "NN")
-        println("New string : $newString")
-    }
-    File("data.txt").writeText(newString)
-}
+fun update(filePath: String?, oldString: String, newString: String?) {
+        val Updatefile = File(filePath)
+        var DatoActual = ""
+        var reader: BufferedReader? = null
+        var writer: FileWriter? = null
+        try {
+            reader = BufferedReader(FileReader(Updatefile))
 
-fun añadir(args: ArrayList<Estudiante> = arrayListOf()) {
-    for(i in args.indices){
-    File("data.txt").appendText("\n"+args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
-            "     "+args[i].calificacion +"     "+ args[i].fechaRegistro)}
-}
+            //Lee todas las lineas del archivo
+            var line = reader.readLine()
+            while (line != null) {
+                DatoActual = DatoActual + line + System.lineSeparator()
+                line = reader.readLine()
+            }
+
+            //Remplaza el anteriguo dato por un nuevo
+            val nuevoDato = DatoActual.replace(oldString.toRegex(), newString!!)
+
+            //Reescribe el dato
+            writer = FileWriter(Updatefile)
+            writer.write(nuevoDato)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } finally {
+            try {
+                //aqui se cierran los recursos
+                reader!!.close()
+                writer!!.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
 
 fun eliminar(fileName: String, startLine: Int, numLines: Int) {
     require(!fileName.isEmpty() && startLine >= 1 && numLines >= 1)
@@ -84,6 +100,7 @@ fun eliminar(fileName: String, startLine: Int, numLines: Int) {
     val text = lines.joinToString(System.lineSeparator())
     f.writeText(text)
 }
+
 
 
 
