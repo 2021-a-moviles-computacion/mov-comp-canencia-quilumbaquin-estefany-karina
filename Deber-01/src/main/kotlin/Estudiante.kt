@@ -7,6 +7,6 @@ class Estudiante(
     var Edad: Int,
     var segunda: Boolean,
     var calificacion: Double,
-    var fechaIngreso: Date = Date()
+    var fechaRegistro: Date = Date()
         ) {
     }

@@ -1,3 +1,7 @@
+import java.text.DateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
 fun imprimir(estudiante: ArrayList<Estudiante> = arrayListOf()) {
     var profesor: Profesor
     var i=Int
@@ -13,7 +17,7 @@ fun imprimir(estudiante: ArrayList<Estudiante> = arrayListOf()) {
     println("\nLISTA DE ESTUDIANTES\n")
     for(i in estudiante.indices){
         println(estudiante[i].Nombre+"     "+estudiante[i].Edad+"     "+estudiante[i].segunda+"    "+
-        estudiante[i].calificacion+"     "+estudiante[i].fechaIngreso)
+        estudiante[i].calificacion+"     "+estudiante[i].fechaRegistro)
     }
 }
 
@@ -23,6 +27,7 @@ fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()) {
     var nombre: String
     var edad: Int
     var nota: Double
+
 
     println("INGRESAR DATOS DEL ESTUDIANTE")
     println("\n¿Desea ingresar datos?")
@@ -35,8 +40,10 @@ fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()) {
         edad = readLine()?.toInt() as Int
         print("Calificación  ")
         nota = readLine()?.toDouble() as Double
+        print("Es segunda matrícula? true/false:  ")
+        var segunda: Boolean = readLine().toBoolean()
 
-        estudiante.add(Estudiante(nombre, edad, true, nota))
+        estudiante.add(Estudiante(nombre, edad, segunda, nota))
 
         println("\n¿Desea ingresar datos?")
         ingreso = readLine().toString()

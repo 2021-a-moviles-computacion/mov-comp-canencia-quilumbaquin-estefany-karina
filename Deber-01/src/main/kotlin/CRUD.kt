@@ -4,7 +4,7 @@ import java.io.File
 fun create(args: ArrayList<Estudiante> = arrayListOf()) {
 
     val fileName = "data.txt"
-
+    val i :Int
     var file = File(fileName)
 
     // CREAR UN NUEVA ARCHIVO
@@ -13,8 +13,8 @@ fun create(args: ArrayList<Estudiante> = arrayListOf()) {
     file.bufferedWriter().use { out ->
         for(i in args.indices){
         out.write(args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
-                "     "+args[i].calificacion +"     "+ args[i].fechaIngreso+"\n")
-    }}
+                "     "+args[i].calificacion +"     "+ args[i].fechaRegistro+"\n")
+        }}
 
     if(isNewFileCreated){
         println("$fileName Se ha creado.")
@@ -32,13 +32,6 @@ fun create(args: ArrayList<Estudiante> = arrayListOf()) {
     }
 
 }
-
-
-/*fun read(args: ArrayList<Estudiante> = arrayListOf()) {
-    val file = File("data.txt")
-    var content:String = file.readText()
-    println(content)
-}*/
 
 fun read(args: ArrayList<Estudiante> = arrayListOf()) {
     val fileName :String = "data.txt"
@@ -71,20 +64,11 @@ fun update(args: ArrayList<Estudiante> = arrayListOf()) {
     File("data.txt").writeText(newString)
 }
 
-/*fun update(args: ArrayList<Estudiante> = arrayListOf()){
-    val nombre: String
-    val i: Int = 1
-    val fileName :String = "data.txt"
-
-    println("Ingrese el nombre:  ")
-    nombre= readLine().toString()
-
-    File(fileName).readLines().forEach{
-    while(nombre.equals(args[i].Nombre,false)){
-        i+1
-    }
-        println(nombre + "\n${i}:   "+args[i].Nombre)
-}}*/
+fun añadir(args: ArrayList<Estudiante> = arrayListOf()) {
+    for(i in args.indices){
+    File("data.txt").appendText(args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
+            "     "+args[i].calificacion +"     "+ args[i].fechaRegistro+"\n")}
+}
 
 
 
