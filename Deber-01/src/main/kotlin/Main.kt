@@ -30,10 +30,13 @@ fun main() {
     }
 
     if(accion == "actualizar"){
+
         println("Ingrese: 1\n para Cambiar información de un registro \n2 para Ingresar un nuevo registro")
         var actualizarR:String=readLine().toString()
         if(actualizarR=="1"){
             //FALTA..-----
+            update(Datosestudiante)
+
         }else if(actualizarR=="2"){
         ingresarEstudiante(Datosestudiante)
         añadir(Datosestudiante)
