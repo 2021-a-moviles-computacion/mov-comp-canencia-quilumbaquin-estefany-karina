@@ -1,3 +1,6 @@
-ali      23     true     5.5     Sun Jul 04 19:48:56 COT 2021
-carla      34     false     4.5     Sun Jul 04 19:49:09 COT 2021
-asa      23     true     4.4     Sun Jul 04 19:49:40 COT 2021
+dani      23     true     5.4     Sun Jul 04 21:37:47 COT 2021
+kari      23     true     6.7     Sun Jul 04 21:39:11 COT 2021
+alison      3     false     4.3     Sun Jul 04 21:39:29 COT 2021
+nicolas      23     true     4.5     Sun Jul 04 21:40:46 COT 2021
+michelle      34     false     4.5     Sun Jul 04 21:41:01 COT 2021
+lllll      24     true     6.8     Sun Jul 04 21:41:16 COT 2021

@@ -1,3 +1,4 @@
+import java.io.BufferedReader
 import java.io.File
 
 
@@ -66,9 +67,33 @@ fun update(args: ArrayList<Estudiante> = arrayListOf()) {
 
 fun añadir(args: ArrayList<Estudiante> = arrayListOf()) {
     for(i in args.indices){
-    File("data.txt").appendText(args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
-            "     "+args[i].calificacion +"     "+ args[i].fechaRegistro+"\n")}
+    File("data.txt").appendText("\n"+args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
+            "     "+args[i].calificacion +"     "+ args[i].fechaRegistro)}
 }
+
+fun eliminar(fileName: String, startLine: Int, numLines: Int) {
+    require(!fileName.isEmpty() && startLine >= 1 && numLines >= 1)
+    val f = File(fileName)
+    if (!f.exists()) {
+        println("$fileName no existe")
+        return
+    }
+    var lines = f.readLines()
+    val size = lines.size
+    if (startLine > size) {
+        println("La línea de salida está más allá de la longitud del archivo")
+        return
+    }
+    var n = numLines
+    if (startLine + numLines - 1 > size) {
+        println("Intentando eliminar algunas líneas que están más allá del final del archivo")
+        n = size - startLine + 1
+    }
+    lines = lines.take(startLine - 1) + lines.drop(startLine + n - 1)
+    val text = lines.joinToString(System.lineSeparator())
+    f.writeText(text)
+}
+
 
 
 
