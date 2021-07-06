@@ -24,7 +24,7 @@ class ESqliteHelperUsuario(
         """.trimIndent()
         Log.i("bdd","Creando la tabla de usuario")
 
-        db?.execSQL(scriptCrearTablaUsuario)
+        db?.execSQL(scriptCrearTablaUsuario)}
 
         fun crearUsuarioFormulario(
             nombre: String,
@@ -106,13 +106,11 @@ class ESqliteHelperUsuario(
             return if (resultadoActualizacion == -1) false else true
         }
 
-    }
+
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
 
 
     }
-
-
 
 }

@@ -15,7 +15,6 @@ class IngresoDatos : AppCompatActivity() {
 
         EBaseDatos.TablaUsuario = ESqliteHelperUsuario(this)
 
-
         val btnGuardar = findViewById<Button>(
             R.id.btn_guardar
         )
@@ -27,15 +26,13 @@ class IngresoDatos : AppCompatActivity() {
         val txtDescripcion = findViewById<EditText>(
             R.id.etxt_descripcion
         )
-        val txtid = findViewById<EditText>(
-            R.id.etxt_id
-        )
         btnGuardar.setOnClickListener{
-            val id = txtid.text.toString().toInt()
             val nombre = txtNombre.text.toString()
             val descripcion = txtDescripcion.text.toString()
 
-            val usuario = EUsuarioBDD(id, nombre, descripcion)
+            val usuario = EUsuarioBDD(1, nombre, descripcion)
+
+            EBaseDatos.TablaUsuario
         }
     }
 }
