@@ -1,1 +1,7 @@
-ooiio      34     true     4.4     Mon Jul 05 11:38:16 COT 2021ooiio      34     false     4.4     Mon Jul 05 11:38:16 COT 2021
+NombreProfesor:   JKJJK
+Materia:          eerer
+Edad:             23
+Estado Civil:     s
+Teléfono:         345543
+
+kari      34     true     4.5     Mon Jul 05 20:23:35 COT 2021

@@ -5,7 +5,7 @@ fun main() {
     var accion: String
     var fileName: String
 
-    print("Ingrese una acción: \ncrear \neliminar \nactualizar(cambiar información-Añadir un nuevo registro) \nleer" +
+    print("Ingrese una acción: \ncrear \neliminar \nactualizar(cambiar información-Añadir un nuevo registro) \nleer\n" +
             "¿Que desea hacer?:    ")
     accion = readLine().toString()
 

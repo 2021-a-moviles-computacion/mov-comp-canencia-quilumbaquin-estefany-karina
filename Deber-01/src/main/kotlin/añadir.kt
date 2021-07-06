@@ -1,19 +1,5 @@
 import java.io.File
-import java.text.DateFormat
-import java.util.*
 import kotlin.collections.ArrayList
-
-fun profesor() {
-    var profesor: Profesor
-    var i=Int
-
-    profesor=(Profesor("Esteban Lopez","Redes",34,'S',"2380453"))
-    println("NombreProfesor:   ${profesor.nombre}")
-    println("Materia:          ${profesor.materia}")
-    println("Edad:             ${profesor.Edad}")
-    println("Estado Civil:     ${profesor.EstadoCivil}")
-    println("Teléfono:         ${profesor.telefono}\n\n")
-}
 
 fun ingresarEstudiante( estudiante: ArrayList<Estudiante> = arrayListOf()) {
     val i: Int

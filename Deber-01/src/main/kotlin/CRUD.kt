@@ -10,9 +10,27 @@ fun create(fileName: String, args: ArrayList<Estudiante> = arrayListOf()) {
     val isNewFileCreated :Boolean = file.createNewFile()
 
     file.bufferedWriter().use { out ->
-        profesor()
+        var profesor: Profesor
+        var i=Int
+        print("Nombre Profesor:       ")
+        var nombrePro= readLine().toString().toUpperCase()
+        print("Materia:       ")
+        var materia= readLine().toString().toUpperCase()
+        print("Edad Profesor:       ")
+        var edadprof= readLine()?.toInt() as Int
+        print("Estado Civil(S(soltero)/C(casado)/D(divorciado)):       ")
+        var estC= readLine().toString().toUpperCase()
+        val ec : Char = estC.single()
+        print("Telefono Profesor:       ")
+        var tel= readLine().toString()
+
+        profesor=(Profesor(nombrePro,materia,edadprof,ec,tel))
+        var x = "NombreProfesor:   ${profesor.nombre}\n"+"Materia:          ${profesor.materia}\n"+ "Edad:             ${profesor.Edad}\n"+
+                "Estado Civil:     ${profesor.EstadoCivil}\n"+"Teléfono:         ${profesor.telefono}\n\n"
+        out.write(x)
+
         for(i in args.indices){
-        out.write(args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
+        out.write("${args[i].Nombre}"+"      "+ args[i].Edad +"     "+ args[i].segunda +
                 "     "+args[i].calificacion +"     "+ args[i].fechaRegistro+"\n")
         }}
 
