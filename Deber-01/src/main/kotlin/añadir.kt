@@ -32,8 +32,8 @@ fun ingresarEstudiante( estudiante: ArrayList<Estudiante> = arrayListOf()) {
 
 fun añadir(fName :String, args: java.util.ArrayList<Estudiante> = arrayListOf()) {
     for(i in args.indices){
-        File(fName).appendText("\n"+args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
-                "     "+args[i].calificacion +"     "+ args[i].fechaRegistro)}
+        File(fName).appendText("${args[i].Edad}" + "          "+ args[i].segunda +
+                "              "+args[i].calificacion +"              "+ args[i].fechaRegistro+ "           "+"${args[i].Nombre}")}
 }
 
 

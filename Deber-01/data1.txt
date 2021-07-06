@@ -1,0 +1,12 @@
+NombreProfesor:   ANDRES LOPEZ
+Materia:          BASES DE DATOS
+Edad:             47
+Estado Civil:     C
+Teléfono:         2380453
+
+EDAD        SEGUNDA        CALIFICACIÓN        FECHA DE REGISTRO                     NOMBRE DEL ESTUDIANTE
+23          true              6.7              Mon Jul 05 22:00:14 COT 2021           Erika Canencia
+24          true              6.5              Mon Jul 05 22:00:46 COT 2021           Karina Diaz
+25          false              7.8              Mon Jul 05 22:01:03 COT 2021           Liliana Perez
+25          false              4.5              Mon Jul 05 22:01:21 COT 2021           Alisson Hidalgo
+34          false              7.8              Mon Jul 05 22:05:28 COT 2021           Lola Martinez

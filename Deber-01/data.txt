@@ -1,7 +1,8 @@
-NombreProfesor:   JKJJK
-Materia:          eerer
+NombreProfesor:   ERE DFD
+Materia:          ERFDF
 Edad:             23
-Estado Civil:     s
-Teléfono:         345543
+Estado Civil:     S
+Teléfono:         434343
 
-kari      34     true     4.5     Mon Jul 05 20:23:35 COT 2021
+EDAD        SEGUNDA        CALIFICACIÓN        FECHA DE REGISTRO                        NOMBRE DEL ESTUDIANTE
+23          true              4.5              Mon Jul 05 21:52:43 COT 2021           klllkkl kkllk

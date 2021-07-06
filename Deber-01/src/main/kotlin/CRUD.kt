@@ -29,9 +29,11 @@ fun create(fileName: String, args: ArrayList<Estudiante> = arrayListOf()) {
                 "Estado Civil:     ${profesor.EstadoCivil}\n"+"Teléfono:         ${profesor.telefono}\n\n"
         out.write(x)
 
+        //ENCABEZADO
+        out.write("EDAD        SEGUNDA        CALIFICACIÓN        FECHA DE REGISTRO                     NOMBRE DEL ESTUDIANTE\n")
         for(i in args.indices){
-        out.write("${args[i].Nombre}"+"      "+ args[i].Edad +"     "+ args[i].segunda +
-                "     "+args[i].calificacion +"     "+ args[i].fechaRegistro+"\n")
+        out.write( "${args[i].Edad}" + "          "+ args[i].segunda +
+                "              "+args[i].calificacion +"              "+ args[i].fechaRegistro+ "           "+"${args[i].Nombre}"+"\n")
         }}
 
     if(isNewFileCreated){
