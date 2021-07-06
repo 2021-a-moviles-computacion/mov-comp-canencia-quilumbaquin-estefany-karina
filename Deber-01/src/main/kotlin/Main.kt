@@ -3,6 +3,7 @@ fun main() {
     var Datosestudiante: ArrayList<Estudiante> = arrayListOf()
     var datosProfesor: Profesor
     var accion: String
+    var fileName: String
 
     print("Ingrese una acción: \ncrear \neliminar \nactualizar(cambiar información-Añadir un nuevo registro) \nleer" +
             "¿Que desea hacer?:    ")
@@ -10,41 +11,57 @@ fun main() {
 
 
     if(accion == "crear"){
+        print("\n\nIngrese el nombre del archivo:   ")
+        val fileName = readLine().toString()
         ingresarEstudiante(Datosestudiante)
-        create(Datosestudiante)
-        read(Datosestudiante)
+        create(fileName,Datosestudiante)
+        read(fileName)
     }
 
     if(accion == "eliminar"){
 
         //FALTA FUNCION ELIMINAR
-        print("\n\nNombre del archivo:  data.txt\n ")
-        var file :String ="data.txt"
-        read(Datosestudiante)
+        print("\n\nIngrese el nombre del archivo:    ")
+        fileName = readLine().toString()
+        read(fileName)
         print("\nDesde de que linea desea eliminar:   ")
         var startLine :Int = readLine()?.toInt() as Int
         print("\n,Número de lineas que desea borrar:    ")
         var num :Int = readLine()?.toInt() as Int
 
-        eliminar(file,startLine,num)
+        eliminar(fileName,startLine,num)
     }
 
     if(accion == "actualizar"){
 
-        println("\nIngrese: \n1 para Cambiar información de un registro \n2 para Ingresar un nuevo registro")
+        println("\n\nIngrese: \n1 para Cambiar información de un registro \n2 para Ingresar un nuevo registro")
         var actualizarR:String=readLine().toString()
+
         if(actualizarR=="1"){
-            read(Datosestudiante)
-            update("data.txt", "bar", "ooiio")
+            print("\n\nIngrese el nombre del archivo:    ")
+            fileName = readLine().toString()
+            read(fileName)
+
+            print("\nDato actual: ")
+            var actual= readLine().toString()
+            print("\nNuevo Dato: ")
+            var nuevo= readLine().toString()
+            update(fileName, actual, nuevo)
 
         }else if(actualizarR=="2"){
-        ingresarEstudiante(Datosestudiante)
-        añadir(Datosestudiante)
-        read(Datosestudiante)}
+            print("\n\nIngrese el nombre del archivo:    ")
+            fileName = readLine().toString()
+
+            print("Ingresar")
+            ingresarEstudiante(Datosestudiante)
+            añadir(fileName, Datosestudiante)
+            read(fileName)}
     }
 
     if(accion == "leer"){
-        read(Datosestudiante)
+        print("\n\nIngrese el nombre del archivo:    ")
+        fileName = readLine().toString()
+        read(fileName)
     }
 }
 

@@ -3,7 +3,7 @@ import java.text.DateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-fun imprimir(estudiante: ArrayList<Estudiante> = arrayListOf()) {
+fun profesor() {
     var profesor: Profesor
     var i=Int
 
@@ -12,17 +12,10 @@ fun imprimir(estudiante: ArrayList<Estudiante> = arrayListOf()) {
     println("Materia:          ${profesor.materia}")
     println("Edad:             ${profesor.Edad}")
     println("Estado Civil:     ${profesor.EstadoCivil}")
-    println("Teléfono:         ${profesor.telefono}")
-
-
-    println("\nLISTA DE ESTUDIANTES\n")
-    for(i in estudiante.indices){
-        println(estudiante[i].Nombre+"     "+estudiante[i].Edad+"     "+estudiante[i].segunda+"    "+
-        estudiante[i].calificacion+"     "+estudiante[i].fechaRegistro)
-    }
+    println("Teléfono:         ${profesor.telefono}\n\n")
 }
 
-fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()) {
+fun ingresarEstudiante( estudiante: ArrayList<Estudiante> = arrayListOf()) {
     val i: Int
     //var estudiante: ArrayList<Estudiante> = arrayListOf()
     var nombre: String
@@ -50,9 +43,10 @@ fun ingresarEstudiante(estudiante: ArrayList<Estudiante> = arrayListOf()) {
         ingreso = readLine().toString()
     }
 }
-fun añadir(args: java.util.ArrayList<Estudiante> = arrayListOf()) {
+
+fun añadir(fName :String, args: java.util.ArrayList<Estudiante> = arrayListOf()) {
     for(i in args.indices){
-        File("data.txt").appendText("\n"+args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
+        File(fName).appendText("\n"+args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
                 "     "+args[i].calificacion +"     "+ args[i].fechaRegistro)}
 }
 

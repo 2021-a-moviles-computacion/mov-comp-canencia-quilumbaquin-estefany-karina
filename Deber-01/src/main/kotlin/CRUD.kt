@@ -2,9 +2,7 @@ import java.io.*
 import java.util.*
 
 
-fun create(args: ArrayList<Estudiante> = arrayListOf()) {
-
-    val fileName = "data.txt"
+fun create(fileName: String, args: ArrayList<Estudiante> = arrayListOf()) {
     val i :Int
     var file = File(fileName)
 
@@ -12,6 +10,7 @@ fun create(args: ArrayList<Estudiante> = arrayListOf()) {
     val isNewFileCreated :Boolean = file.createNewFile()
 
     file.bufferedWriter().use { out ->
+        profesor()
         for(i in args.indices){
         out.write(args[i].Nombre+"      "+ args[i].Edad +"     "+ args[i].segunda +
                 "     "+args[i].calificacion +"     "+ args[i].fechaRegistro+"\n")
@@ -34,8 +33,7 @@ fun create(args: ArrayList<Estudiante> = arrayListOf()) {
 
 }
 
-fun read(args: ArrayList<Estudiante> = arrayListOf()) {
-    val fileName :String = "data.txt"
+fun read(fileName: String) {
     var i :Int = 1
 
     File(fileName).readLines().forEach {
