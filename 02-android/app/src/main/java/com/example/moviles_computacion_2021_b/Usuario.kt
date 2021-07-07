@@ -73,6 +73,13 @@ class Usuario : AppCompatActivity() {
         edNombre.setText(lista.nombre)
         edDescripcion.setText(lista.descripcion)
         Log.i("Consultar Usuario", "${id}")
+        if(edNombre.text.isNotBlank() && edDescripcion.text.isNotBlank()){
+
+        }else{
+            Toast.makeText(this,"No existen el Usuario", Toast.LENGTH_LONG).show()
+
+        }
+
         //edId.setText("")
 
     }
