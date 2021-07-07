@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import java.util.Random
 
 class Usuario : AppCompatActivity() {
@@ -15,12 +17,15 @@ class Usuario : AppCompatActivity() {
     private lateinit var btnVer:Button
 
     private lateinit var sqliteHelper: ESqliteHelperUsuario
+    private lateinit var recyclerView: RecyclerView
+    private var adaptador: UsuarioAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_usuario)
 
         ver()
+        initRecycleView()
         sqliteHelper = ESqliteHelperUsuario(this)
 
         btnAdd.setOnClickListener{añadirUsuario()}
@@ -28,9 +33,9 @@ class Usuario : AppCompatActivity() {
     }
 
     fun obtenerUsuario(){
-        val x:Int =1
-        val lista=sqliteHelper.consultarUsuarioPorId(x)
-        Log.e("ddsdsds", "${x}")
+        val lista=sqliteHelper.consultarTodos()
+        Log.e("Consultar Usuario", "${lista.size}")
+        adaptador?.addItems(lista)
     }
 
     private fun añadirUsuario(){
@@ -44,9 +49,11 @@ class Usuario : AppCompatActivity() {
             //val std= EUsuarioBDD(id,nombre, descripcion)
                 //REVISAR************************
             val estado = sqliteHelper.crearUsuarioFormulario(nombre, descripcion)
+
             if (estado != null){
                 Toast.makeText(this,"usuario añadido", Toast.LENGTH_SHORT).show()
                 borrarTexto()
+                Log.e("añadir","${nombre}")
             }else{
                 Toast.makeText(this,"usuario no añadido", Toast.LENGTH_SHORT).show()
 
@@ -60,10 +67,17 @@ class Usuario : AppCompatActivity() {
         edNombre.requestFocus()
     }
 
+    fun initRecycleView(){
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adaptador = UsuarioAdapter()
+        recyclerView.adapter = adaptador
+    }
+
     private fun ver(){
         edNombre = findViewById(R.id.edNombre)
         edDescripcion = findViewById(R.id.edDescripcion)
         btnAdd=findViewById(R.id.btn_add)
         btnVer=findViewById(R.id.btn_ver)
+        recyclerView = findViewById(R.id.recycleView)
     }
 }
