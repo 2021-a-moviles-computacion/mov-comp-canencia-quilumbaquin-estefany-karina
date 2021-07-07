@@ -46,36 +46,6 @@ class ESqliteHelperUsuario(
             return if (resultadoEscritura.toInt() == -1) false else true
         }
 
-        fun consultarTodos(): ArrayList<EUsuarioBDD>{
-            val stdList: ArrayList<EUsuarioBDD> = ArrayList()
-            val scriptConsultaUsuarios="SELECT * FROM USUARIO"
-            val db = this.readableDatabase
-
-            val cursor: Cursor
-
-            try{
-                cursor = db.rawQuery(scriptConsultaUsuarios, null)
-            }catch(e: Exception){
-                db.execSQL(scriptConsultaUsuarios)
-                e.printStackTrace()
-                return ArrayList()
-            }
-
-            var id: Int
-            var nombre: String
-            var descripcion: String
-            if(cursor.moveToFirst()){
-                do{
-                    id=cursor.getInt(cursor.getColumnIndex("id"))
-                    nombre=cursor.getString(cursor.getColumnIndex("Nombre"))
-                    descripcion=cursor.getString(cursor.getColumnIndex("Descripción"))
-                    val std=EUsuarioBDD(id,nombre,descripcion)
-                    stdList.add(std)
-                }while(cursor.moveToNext())
-            }
-            return stdList
-        }
-
         fun consultarUsuarioPorId(id: Int): EUsuarioBDD{
             //var
             val scriptConsultarUsuario = "SELECT * FROM USUARIO WHERE ID = ${id}"
@@ -114,7 +84,7 @@ class ESqliteHelperUsuario(
                 .delete(
                     "USUARIO",
                     "id=?",
-                    arrayOf()
+                    arrayOf(id.toString())
                 )
             conexionEscritura.close()
             return if (resultadoEliminacion.toInt() == -1) false else true

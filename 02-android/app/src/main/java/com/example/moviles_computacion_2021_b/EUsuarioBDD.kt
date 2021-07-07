@@ -4,7 +4,7 @@ import java.util.Random
 import java.util.*
 
 class EUsuarioBDD (
-    var id: Int,
+    var id: Int = 1,
     var nombre: String ="",
     var descripcion: String
         ){
