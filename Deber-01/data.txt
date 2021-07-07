@@ -1,0 +1,8 @@
+NombreProfesor:   ERE DFD
+Materia:          ERFDF
+Edad:             23
+Estado Civil:     S
+Teléfono:         434343
+
+EDAD        SEGUNDA        CALIFICACIÓN        FECHA DE REGISTRO                        NOMBRE DEL ESTUDIANTE
+23          true              4.5              Mon Jul 05 21:52:43 COT 2021           klllkkl kkllk
