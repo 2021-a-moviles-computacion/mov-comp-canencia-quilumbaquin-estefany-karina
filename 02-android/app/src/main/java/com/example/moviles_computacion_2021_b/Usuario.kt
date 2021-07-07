@@ -60,6 +60,8 @@ class Usuario : AppCompatActivity() {
         edNombre.text.clear()
         edDescripcion.text.clear()
         Log.i("Actualizar", "${nombre} -- ${descripcion} -- ${id}")
+        borrarTexto()
+
         Toast.makeText(this,"Se ha modificado", Toast.LENGTH_SHORT).show()
     }else{
         Toast.makeText(this,"Los campos no deben estar vacios", Toast.LENGTH_LONG).show()
@@ -87,19 +89,16 @@ class Usuario : AppCompatActivity() {
     private fun añadirUsuario(){
         val nombre = edNombre.text.toString()
         val descripcion = edDescripcion.text.toString()
-        //val id = Random().nextInt(100)
 
         if(nombre.isEmpty() || descripcion.isEmpty()){
             Toast.makeText(this,"ingrese el requerimiento", Toast.LENGTH_SHORT).show()
         }else{
-            //val std= EUsuarioBDD(id,nombre, descripcion)
-                //REVISAR************************
             val estado = sqliteHelper.crearUsuarioFormulario(nombre, descripcion)
 
             if (estado != null){
                 Toast.makeText(this,"usuario añadido", Toast.LENGTH_SHORT).show()
                 borrarTexto()
-                Log.i("añadir","${nombre} ---> ${descripcion}")
+                Log.e("añadir","${nombre} ---> ${descripcion}")
             }else{
                 Toast.makeText(this,"usuario no añadido", Toast.LENGTH_SHORT).show()
 
