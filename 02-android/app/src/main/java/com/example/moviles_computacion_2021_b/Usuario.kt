@@ -8,9 +8,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import java.util.Random
 
 class Usuario : AppCompatActivity() {
     private lateinit var edNombre: EditText
@@ -32,6 +29,7 @@ class Usuario : AppCompatActivity() {
 
         btnAdd.setOnClickListener{añadirUsuario()}
         btnVer.setOnClickListener{obtenerUsuario()}
+        btnEditar.setOnClickListener{  editarUsuario() }
         btnBorrar.setOnClickListener{
             AlertDialog.Builder(this).apply {
                 setTitle("Alerta")
@@ -42,23 +40,31 @@ class Usuario : AppCompatActivity() {
                 setNegativeButton("No", null)
             }.show()
             }
-        btnEditar.setOnClickListener{  editarUsuario() }
     }
     fun eliminarUsuario(){
         val id = edId.getText().toString().toInt()
         val mensaje = sqliteHelper.eliminarUsuarioFormulario(id)
+        Log.i("Eliminar","${id}")
         Toast.makeText(this,"usuario eliminado", Toast.LENGTH_SHORT).show()
 
     }
 
     fun editarUsuario(){
+        var nombre = edNombre.text.toString()
+        var descripcion = edDescripcion.text.toString()
+        var id = edId.text.toString().toInt()
 
-        val id = edId as Int
-        val nombre = edNombre.text.toString()
-        val descripcion = edDescripcion.text.toString()
-        sqliteHelper.actualizarUsuarioFormulario(nombre,descripcion,id)
+    if(edNombre.text.isNotBlank()&&edDescripcion.text.isNotBlank() && edId.text.isNotBlank()){
+        sqliteHelper.actualizarUsuarioFormulario(nombre,
+            descripcion, id)
+        edNombre.text.clear()
+        edDescripcion.text.clear()
+        Log.i("Actualizar", "${nombre} -- ${descripcion} -- ${id}")
+        Toast.makeText(this,"Se ha modificado", Toast.LENGTH_SHORT).show()
+    }else{
+        Toast.makeText(this,"Los campos no deben estar vacios", Toast.LENGTH_LONG).show()
 
-
+    }
     }
 
     fun obtenerUsuario(){
@@ -66,8 +72,8 @@ class Usuario : AppCompatActivity() {
         val lista=sqliteHelper.consultarUsuarioPorId(id)
         edNombre.setText(lista.nombre)
         edDescripcion.setText(lista.descripcion)
-        Log.e("Consultar Usuario", "${id}")
-        edId.setText("")
+        Log.i("Consultar Usuario", "${id}")
+        //edId.setText("")
 
     }
 
@@ -86,7 +92,7 @@ class Usuario : AppCompatActivity() {
             if (estado != null){
                 Toast.makeText(this,"usuario añadido", Toast.LENGTH_SHORT).show()
                 borrarTexto()
-                Log.e("añadir","${nombre} ---> ${descripcion}")
+                Log.i("añadir","${nombre} ---> ${descripcion}")
             }else{
                 Toast.makeText(this,"usuario no añadido", Toast.LENGTH_SHORT).show()
 

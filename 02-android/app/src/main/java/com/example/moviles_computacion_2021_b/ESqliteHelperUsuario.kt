@@ -92,17 +92,17 @@ class ESqliteHelperUsuario(
 
         fun actualizarUsuarioFormulario (nombre :String,
                                          descripcion:String,
-                                         idActualizar :Int):Boolean{
+                                         id :Int):Boolean {
 
             val conexionEscritura = writableDatabase
             var valoresActualizar = ContentValues()
             valoresActualizar.put("nombre", nombre)
-            valoresActualizar.put("descripción", descripcion)
+            valoresActualizar.put("descripcion", descripcion)
             val resultadoActualizacion = conexionEscritura.update(
-                "USARIO",
+                "USUARIO",
                 valoresActualizar,
                 "id=?",
-                arrayOf(idActualizar.toString())
+                arrayOf(id.toString())
             )
             conexionEscritura.close()
             return if (resultadoActualizacion == -1) false else true
