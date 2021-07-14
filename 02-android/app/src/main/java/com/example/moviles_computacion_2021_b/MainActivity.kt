@@ -25,6 +25,15 @@ class MainActivity : AppCompatActivity() {
             abrirActividad(ACicloVida::class.java)
         }
 
+        //PARA IR AL RECYCLEVIEW
+        val btnIrRecycleView = findViewById<Button>(
+            R.id.btn_ir_recycler_view
+        )
+
+        btnIrRecycleView.setOnClickListener{
+            abrirActividadConParametros(GRecycleView::class.java)
+        }
+
 //     Botón para ir a la Actividad ACicloVida
 
         val btnIrBListView = findViewById<Button>(
@@ -52,6 +61,12 @@ class MainActivity : AppCompatActivity() {
             )
             startActivityForResult(intentConRespuesta, CODIGO_RESPUESTA_INTENT_IMPLICITO)
         }
+
+        val btnUsuario = findViewById<Button>(R.id.btnUser)
+
+        btnUsuario
+            .setOnClickListener{abrirActividad(Usuario::class.java)}
+
     }
 
     fun abrirActividad(
