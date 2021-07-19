@@ -82,7 +82,7 @@ class Profesor : AppCompatActivity() {
 
                     AlertDialog.Builder(this).apply {
                         setTitle("Alerta")
-                        setMessage("¿Desea eliminar?")
+                        setMessage("¿Desea eliminar el registro?")
                         setPositiveButton("Si"){ _: DialogInterface, _: Int ->
                             BaseDatos.BaseDatosSQLiteHelper!!.eliminarProfesorFormulario(Aprofesor!!.idProfesor)
                             adapter?.remove(adapter!!.getItem(posicionItem));

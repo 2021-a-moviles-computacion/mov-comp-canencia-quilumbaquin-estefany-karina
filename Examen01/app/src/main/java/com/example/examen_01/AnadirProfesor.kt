@@ -25,18 +25,22 @@ class AnadirProfesor : AppCompatActivity() {
 
         btnGuardarProfesor.setOnClickListener {
             val nombre = nombreProfesor.text.toString()
-            val materia = materia.text.toString()
-            val edadProfesor = edadProfesor.text.toString().toInt()
+            val materiaP = materia.text.toString()
+            val edadProfesor1 = edadProfesor.text.toString().toInt()
             val EstadoCivil = estadoCivil.text.toString()
-            val telefono = telefono.text.toString()
-            if(nombre.isEmpty() || materia.isEmpty() ){
-            Toast.makeText(this,"ingrese el requerimiento", Toast.LENGTH_SHORT).show()
+            val telefono1 = telefono.text.toString()
+            if(nombre.isEmpty() || materiaP.isEmpty() || EstadoCivil.isEmpty() || telefono1.isEmpty()){
+            Toast.makeText(this,"ingrese el requerimiento", Toast.LENGTH_LONG).show()
         }else{
-            val estado = BaseDatos.BaseDatosSQLiteHelper!!.crearProfesor(nombre, materia, edadProfesor, EstadoCivil, telefono)
+            val estado = BaseDatos.BaseDatosSQLiteHelper!!.crearProfesor(nombre, materiaP, edadProfesor1, EstadoCivil, telefono1)
+                nombreProfesor.setText("")
+                materia.setText("")
+                edadProfesor.setText("")
+                estadoCivil.setText("")
+                telefono.setText("")
 
             if (estado != null){
                 Toast.makeText(this,"usuario añadido", Toast.LENGTH_SHORT).show()
-
                 Log.e("añadir","${nombre} ---> ${materia}")
             }else{
                 Toast.makeText(this,"usuario no añadido", Toast.LENGTH_SHORT).show()
@@ -75,5 +79,4 @@ class AnadirProfesor : AppCompatActivity() {
         edadProfesor.setText("")
         estadoCivil.setText("")
         telefono.setText("")
-    }
-*/
+    }*/
