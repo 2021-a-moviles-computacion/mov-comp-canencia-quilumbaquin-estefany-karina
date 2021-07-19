@@ -1,9 +1,11 @@
 package com.example.myapplication
 
-class BProfesor (val nombre: String,
-                 val materia: String,
-                 val edad: Int,
-                 val estadoCivil: Char,
-                 val telefono: String
+class BProfesor (
+    var id: Int =1,
+    var nombre: String,
+    var materia: String,
+    var edad: Int,
+    var estadoCivil: String,
+    var telefono: String
 ){
 }

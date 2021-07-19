@@ -23,14 +23,14 @@
         android:id="@+id/btn_anadirProf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="52dp"
         android:text="Añadir Profesor"
-        app:layout_constraintEnd_toEndOf="@+id/_dynamic"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/_dynamic"
-        app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
+        app:layout_constraintEnd_toEndOf="@+id/lv_profesor"
+        app:layout_constraintStart_toStartOf="@+id/lv_profesor"
+        app:layout_constraintTop_toBottomOf="@+id/lv_profesor" />
 
     <ListView
+        android:id="@+id/lv_profesor"
         android:layout_width="339dp"
         android:layout_height="379dp"
         android:layout_marginTop="44dp"
