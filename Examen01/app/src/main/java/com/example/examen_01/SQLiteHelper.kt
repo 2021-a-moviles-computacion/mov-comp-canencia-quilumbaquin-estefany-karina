@@ -5,11 +5,12 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.examen_01.BEstudiante
 import com.example.examen_01.BProfesor
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SQLiteHelper(context: Context):SQLiteOpenHelper(context,"examen",null,1) {
+class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,1) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         val scriptCrearTablaProfesor=
@@ -25,6 +26,22 @@ class SQLiteHelper(context: Context):SQLiteOpenHelper(context,"examen",null,1) {
             """.trimIndent()
         Log.i("bdd", "Creacion tabla profesor")
         db?.execSQL(scriptCrearTablaProfesor)
+
+        val scriptCrearTablaEstudiante=
+            """
+            CREATE TABLE ESTUDIANTE(
+            ID_ESTUDIANTE INTEGER PRIMARY KEY AUTOINCREMENT,
+            ID_PROF INTEGER,
+            NOMBRE VARCHAR(50),
+            EDAD INTEGER,
+            SEGUNDA VARCHAR(5),
+            FECHAREGISTRO VARCHAR(15),
+            CALIFICACION DOUBLE,
+           foreign key(ID_PROF) references PROFESOR (ID_PROFESOR) 
+            )
+            """.trimIndent()
+        Log.i("bdd", "Creacion tabla Estudiante")
+        db?.execSQL(scriptCrearTablaEstudiante)
 
     }
 
@@ -55,11 +72,11 @@ class SQLiteHelper(context: Context):SQLiteOpenHelper(context,"examen",null,1) {
 
 
     fun consultarProfesores(): ArrayList<BProfesor> {
-        val scriptConsultarUsuario = "SELECT * FROM PROFESOR"
+        val scriptConsultarProf = "SELECT * FROM PROFESOR"
         val baseDatosLectura = readableDatabase
-        val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultarUsuario, null)
+        val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultarProf, null)
         val existeUsuario = resultaConsultaLectura.moveToFirst()
-        var arregloProfesor = arrayListOf<BProfesor>()
+        val arregloProfesor = arrayListOf<BProfesor>()
 
         if(existeUsuario){
             do{
@@ -72,7 +89,6 @@ class SQLiteHelper(context: Context):SQLiteOpenHelper(context,"examen",null,1) {
                             resultaConsultaLectura.getInt(3),
                             resultaConsultaLectura.getString(4),
                             resultaConsultaLectura.getString(5)
-                            //SimpleDateFormat("dd/MM/yyyy").parse(resultaConsultaLectura.getString(5))
                         ))
                 }
             }while(resultaConsultaLectura.moveToNext())
@@ -87,7 +103,7 @@ class SQLiteHelper(context: Context):SQLiteOpenHelper(context,"examen",null,1) {
 
         //val conexionEscritura = this.writableDatabase
         val conexionEscritura = writableDatabase
-        var resultadoEliminacion = conexionEscritura
+        val resultadoEliminacion = conexionEscritura
             .delete(
                 "PROFESOR",
                 "ID_PROFESOR=?",
@@ -115,6 +131,127 @@ class SQLiteHelper(context: Context):SQLiteOpenHelper(context,"examen",null,1) {
             "PROFESOR",
             valoresActualizar,
             "ID_PROFESOR=?",
+            arrayOf(id.toString())
+        )
+        conexionEscritura.close()
+        return if (resultadoActualizacion ==-1) false else true
+    }
+
+    //********** FUNCIONES DELA TABLA ESTUDIANTE ***************
+    fun crearEstudiante(
+        nombre: String,
+        edad: Int,
+        Segunda: String,
+        fechaRegistro: String,
+        calificacion: Double
+    ): Boolean{
+        val conexionEscritura = writableDatabase
+        val valoresAGuardar = ContentValues()
+        valoresAGuardar.put("nombre", nombre)
+        valoresAGuardar.put("edad", edad)
+        valoresAGuardar.put("segunda",Segunda)
+        valoresAGuardar.put("fechaRegistro", fechaRegistro)
+        valoresAGuardar.put("calificacion", calificacion)
+        val resultadoEscritura: Long = conexionEscritura
+            .insert(
+                "ESTUDIANTE",
+                null,
+                valoresAGuardar
+            )
+        conexionEscritura.close()
+        return if (resultadoEscritura.toInt() == -1) false else true
+    }
+
+
+    fun consultarEstudiante(idProf: Int): ArrayList<BEstudiante> {
+        val scriptConsultaProfesor = "SELECT * FROM ESTUDIANTE WHERE ID_PROF = ${idProf}"
+        val baseDatosLectura = readableDatabase
+        val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultaProfesor, null)
+        val existeEstudiante = resultaConsultaLectura.moveToFirst()
+        val arregloEstudiante = arrayListOf<BEstudiante>()
+        if(existeEstudiante){
+            do{
+                val id = resultaConsultaLectura.getInt(0)
+                val nombre = resultaConsultaLectura.getString(1)
+                val edad = resultaConsultaLectura.getInt(2)
+                val Matricula = resultaConsultaLectura.getString(3)
+                val fechaRegistro = resultaConsultaLectura.getString(4)
+                val calificacion = resultaConsultaLectura.getDouble(5)
+
+
+                if(id!=null){
+                    arregloEstudiante.add(
+                        BEstudiante(id, idProf, nombre, edad, Matricula, fechaRegistro, calificacion))
+                }
+            }while(resultaConsultaLectura.moveToNext())
+        }
+
+        resultaConsultaLectura.close()
+        baseDatosLectura.close()
+        return arregloEstudiante
+    }
+
+    /*fun consultarEstudiantes(): ArrayList<BEstudiante> {
+        val scriptConsultarUsuario = "SELECT * FROM ESTUDIANTE"
+        val baseDatosLectura = readableDatabase
+        val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultarUsuario, null)
+        val existeUsuario = resultaConsultaLectura.moveToFirst()
+        var arregloEstudiante = arrayListOf<BEstudiante>()
+
+        if(existeUsuario){
+            do{
+                val id = resultaConsultaLectura.getInt(0)
+                if(id!=null){
+                    arregloEstudiante.add(
+                        BEstudiante(id,
+                            resultaConsultaLectura.getInt(1),
+                            resultaConsultaLectura.getString(2),
+                            resultaConsultaLectura.getInt(3),
+                            resultaConsultaLectura.getString(4),
+                            SimpleDateFormat("dd/MM/yyyy").parse(resultaConsultaLectura.getString(5)),
+                            resultaConsultaLectura.getDouble(6)
+
+                        )
+                    )
+                }
+            }while(resultaConsultaLectura.moveToNext())
+        }
+
+        resultaConsultaLectura.close()
+        baseDatosLectura.close()
+        return arregloEstudiante
+    }*/
+
+    fun eliminarEstudianteFormulario (id: Int): Boolean {
+        val conexionEscritura = writableDatabase
+        var resultadoEliminacion = conexionEscritura
+            .delete(
+                "ESTUDIANTE",
+                "ID_ESTUDIANTE=?",
+                arrayOf(id.toString())
+            )
+        conexionEscritura.close()
+        return if (resultadoEliminacion.toInt() == -1) false else true
+    }
+
+    fun actualizarEstudianteFormulario (nombre :String,
+                                      edad: Int,
+                                      Segunda: String,
+                                      fechaRegistro: Date,
+                                        Calificación: Double,
+                                      id :Int):Boolean {
+
+        val conexionEscritura = writableDatabase
+        var valoresActualizar = ContentValues()
+        valoresActualizar.put("nombre", nombre)
+        valoresActualizar.put("edad", edad)
+        valoresActualizar.put("segunda",Segunda)
+        valoresActualizar.put("fechaRegistro", SimpleDateFormat("dd/MM/yyyy").format(fechaRegistro))
+        valoresActualizar.put("calificacion",Calificación)
+        val resultadoActualizacion = conexionEscritura.update(
+            "ESTUDIANTE",
+            valoresActualizar,
+            "ID_ESTUDIANTE=?",
             arrayOf(id.toString())
         )
         conexionEscritura.close()

@@ -94,7 +94,7 @@ class Profesor : AppCompatActivity() {
 
                 }
                 return true }
-            //Ver Casas
+            //Ver Estudiantes
             R.id.menuEstudiantes -> {
 
                 if (Aprofesor != null) {

@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Examen01">
-        <activity android:name=".Estudiante"></activity>
-        <activity android:name=".ActualizarProfesor"/>
-
-        <activity android:name=".AnadirProfesor"/>
+        <activity android:name=".ActualizarEstudiante"></activity>
+        <activity android:name=".AnadirEstudiante" />
+        <activity android:name=".Estudiante" />
+        <activity android:name=".ActualizarProfesor" />
+        <activity android:name=".AnadirProfesor" />
         <activity android:name=".Profesor" />
         <activity android:name=".MainActivity">
             <intent-filter>
