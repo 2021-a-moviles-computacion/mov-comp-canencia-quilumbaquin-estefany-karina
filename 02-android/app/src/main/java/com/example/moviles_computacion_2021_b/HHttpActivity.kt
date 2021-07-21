@@ -12,7 +12,7 @@ class HHttpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hhttp)
 
-        //metodoGet()
+        metodoGet()
         metodoPost()
     }
 
@@ -25,18 +25,30 @@ class HHttpActivity : AppCompatActivity() {
 
         "http://jsonplaceholder.typicode.com/posts"
             .httpPost(parametros)
-
-    }
-
-    fun metodoGet(){
-        "http://jsonplaceholder.typicode.com/posts/1"
-            .httpGet()
-            .responseString{req, res, result->
-                when(result){
+            .responseString { req, res, result ->
+                when (result) {
                     is Result.Failure -> {
                         val error = result.getException()
-                        Log.i("http-klaxon","Error: ${error}")}
-                        is Result.Success ->{
+                        Log.i("http-klaxon", "Error: ${error}")
+                    }
+                    is Result.Success -> {
+                        val postString = result.get()
+                        Log.i("http-klaxon", "${postString}")
+                    }
+                }
+
+            }}
+
+        fun metodoGet() {
+            "http://jsonplaceholder.typicode.com/posts/1"
+                .httpGet()
+                .responseString { req, res, result ->
+                    when (result) {
+                        is Result.Failure -> {
+                            val error = result.getException()
+                            Log.i("http-klaxon", "Error: ${error}")
+                        }
+                        is Result.Success -> {
                             val getString = result.get()
                             Log.i("http-klaxon", "${getString}")
 
@@ -46,8 +58,8 @@ class HHttpActivity : AppCompatActivity() {
                             val post = Klaxon()
                                 .parse<IPostHttp>(getString)
                             Log.i("http-klaxon", "${post?.body}")
+                        }
                     }
                 }
-            }
+        }
     }
-}
