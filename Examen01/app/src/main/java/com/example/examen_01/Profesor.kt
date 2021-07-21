@@ -63,18 +63,14 @@ class Profesor : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem): Boolean {
 
         var Aprofesor = adapter!!.getItem(posicionItem)
-
         return when(item?.itemId){
 
             //Editar
             R.id.editarProfesor-> {
 
                 if (Aprofesor != null) {
-                    abrirActividadConParametros(ActualizarProfesor::class.java,Aprofesor)
-                }
-
-                return true
-            }
+                    abrirActividadConParametros(ActualizarProfesor::class.java,Aprofesor) }
+                return true }
 
             //Eliminar
             R.id.eliminarProfesor -> {
@@ -86,12 +82,9 @@ class Profesor : AppCompatActivity() {
                         setPositiveButton("Si"){ _: DialogInterface, _: Int ->
                             BaseDatos.BaseDatosSQLiteHelper!!.eliminarProfesorFormulario(Aprofesor!!.idProfesor)
                             adapter?.remove(adapter!!.getItem(posicionItem));
-
                         }
                         setNegativeButton("No", null)
                     }.show()
-
-
                 }
                 return true }
             //Ver Estudiantes
@@ -100,9 +93,6 @@ class Profesor : AppCompatActivity() {
                 if (Aprofesor != null) {
                     abrirActividadConParametros(Estudiante::class.java,Aprofesor)
                 }
-
-
-
                 return true }
 
             else -> super.onContextItemSelected(item)

@@ -27,13 +27,13 @@ class BEstudiante(
     }
 
     override fun toString(): String {
-        return "IdProfesor:$idProfesor  " +
-                "IdEstudiante: $idEstudiante"+
-                "Nombre :$nombreEstudiante  " +
-                "Edad :$Edad  " +
-                "Segunda Matrícula?:$segunda  " +
-                "Fecha de registro:$fechaRegistro  " +
-                "Calificación:$Calificacion"
+        return "IdProfesor:         $idProfesor\n" +
+                "IdEstudiante:      $idEstudiante\n"+
+                "Nombre :           $nombreEstudiante\n" +
+                "Edad :             $Edad \n"+
+                "Segunda Matrícula?:$segunda\n" +
+                "Fecha de registro: $fechaRegistro\n " +
+                "Calificación:      $Calificacion \n"
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

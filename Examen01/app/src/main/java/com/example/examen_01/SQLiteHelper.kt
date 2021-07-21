@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.example.examen_01.BEstudiante
 import com.example.examen_01.BProfesor
-import java.text.SimpleDateFormat
 import java.util.*
 
 class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,1) {
@@ -22,7 +21,7 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
             EDAD INTEGER,
             ESTADOCIVIL VARCHAR(10),
             TELEFONO VARCHAR(10)
-            )
+            );
             """.trimIndent()
         Log.i("bdd", "Creacion tabla profesor")
         db?.execSQL(scriptCrearTablaProfesor)
@@ -37,12 +36,11 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
             SEGUNDA VARCHAR(5),
             FECHAREGISTRO VARCHAR(15),
             CALIFICACION DOUBLE,
-           foreign key(ID_PROF) references PROFESOR (ID_PROFESOR) 
-            )
+            FOREIGN KEY(ID_PROF) REFERENCES PROFESOR(ID_PROFESOR) 
+            );
             """.trimIndent()
         Log.i("bdd", "Creacion tabla Estudiante")
         db?.execSQL(scriptCrearTablaEstudiante)
-
     }
 
 
@@ -101,7 +99,6 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
 
     fun eliminarProfesorFormulario (id: Int): Boolean {
 
-        //val conexionEscritura = this.writableDatabase
         val conexionEscritura = writableDatabase
         val resultadoEliminacion = conexionEscritura
             .delete(
@@ -113,12 +110,13 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
         return if (resultadoEliminacion.toInt() == -1) false else true
     }
 
-    fun actualizarProfesorFormulario (nombre :String,
-                                      materia:String,
-                                      edad: Int,
-                                      estadoCivil: String,
-                                      telefono: String,
-                                      id :Int):Boolean {
+    fun actualizarProfesorFormulario (
+        nombre:String,
+        materia:String,
+        edad: Int,
+        estadoCivil: String,
+        telefono: String,
+        id:Int):Boolean {
 
         val conexionEscritura = writableDatabase
         var valoresActualizar = ContentValues()
@@ -139,6 +137,7 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
 
     //********** FUNCIONES DELA TABLA ESTUDIANTE ***************
     fun crearEstudiante(
+        id_profesor: Int,
         nombre: String,
         edad: Int,
         Segunda: String,
@@ -147,6 +146,7 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
     ): Boolean{
         val conexionEscritura = writableDatabase
         val valoresAGuardar = ContentValues()
+        valoresAGuardar.put("id_prof", id_profesor)
         valoresAGuardar.put("nombre", nombre)
         valoresAGuardar.put("edad", edad)
         valoresAGuardar.put("segunda",Segunda)
@@ -163,64 +163,34 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
     }
 
 
-    fun consultarEstudiante(idProf: Int): ArrayList<BEstudiante> {
+    fun consultarEstudiantesIdProfesor(idProf: Int): ArrayList<BEstudiante> {
         val scriptConsultaProfesor = "SELECT * FROM ESTUDIANTE WHERE ID_PROF = ${idProf}"
         val baseDatosLectura = readableDatabase
         val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultaProfesor, null)
         val existeEstudiante = resultaConsultaLectura.moveToFirst()
         val arregloEstudiante = arrayListOf<BEstudiante>()
+
         if(existeEstudiante){
             do{
                 val id = resultaConsultaLectura.getInt(0)
-                val nombre = resultaConsultaLectura.getString(1)
-                val edad = resultaConsultaLectura.getInt(2)
-                val Matricula = resultaConsultaLectura.getString(3)
-                val fechaRegistro = resultaConsultaLectura.getString(4)
-                val calificacion = resultaConsultaLectura.getDouble(5)
-
-
                 if(id!=null){
                     arregloEstudiante.add(
-                        BEstudiante(id, idProf, nombre, edad, Matricula, fechaRegistro, calificacion))
-                }
-            }while(resultaConsultaLectura.moveToNext())
-        }
-
-        resultaConsultaLectura.close()
-        baseDatosLectura.close()
-        return arregloEstudiante
-    }
-
-    /*fun consultarEstudiantes(): ArrayList<BEstudiante> {
-        val scriptConsultarUsuario = "SELECT * FROM ESTUDIANTE"
-        val baseDatosLectura = readableDatabase
-        val resultaConsultaLectura = baseDatosLectura.rawQuery(scriptConsultarUsuario, null)
-        val existeUsuario = resultaConsultaLectura.moveToFirst()
-        var arregloEstudiante = arrayListOf<BEstudiante>()
-
-        if(existeUsuario){
-            do{
-                val id = resultaConsultaLectura.getInt(0)
-                if(id!=null){
-                    arregloEstudiante.add(
-                        BEstudiante(id,
-                            resultaConsultaLectura.getInt(1),
+                        BEstudiante(id,idProf,
                             resultaConsultaLectura.getString(2),
                             resultaConsultaLectura.getInt(3),
                             resultaConsultaLectura.getString(4),
-                            SimpleDateFormat("dd/MM/yyyy").parse(resultaConsultaLectura.getString(5)),
+                            resultaConsultaLectura.getString(5),
                             resultaConsultaLectura.getDouble(6)
-
                         )
                     )
                 }
             }while(resultaConsultaLectura.moveToNext())
         }
-
         resultaConsultaLectura.close()
         baseDatosLectura.close()
         return arregloEstudiante
-    }*/
+    }
+
 
     fun eliminarEstudianteFormulario (id: Int): Boolean {
         val conexionEscritura = writableDatabase
@@ -237,7 +207,7 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
     fun actualizarEstudianteFormulario (nombre :String,
                                       edad: Int,
                                       Segunda: String,
-                                      fechaRegistro: Date,
+                                      fechaRegistro: String,
                                         Calificación: Double,
                                       id :Int):Boolean {
 
@@ -246,7 +216,7 @@ class SQLiteHelper(context: Context?):SQLiteOpenHelper(context,"examen.db",null,
         valoresActualizar.put("nombre", nombre)
         valoresActualizar.put("edad", edad)
         valoresActualizar.put("segunda",Segunda)
-        valoresActualizar.put("fechaRegistro", SimpleDateFormat("dd/MM/yyyy").format(fechaRegistro))
+        valoresActualizar.put("fechaRegistro", fechaRegistro)
         valoresActualizar.put("calificacion",Calificación)
         val resultadoActualizacion = conexionEscritura.update(
             "ESTUDIANTE",

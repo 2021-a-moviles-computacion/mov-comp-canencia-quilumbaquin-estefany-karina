@@ -30,15 +30,17 @@ class Estudiante : AppCompatActivity() {
 
         val profesor= intent.getParcelableExtra<BProfesor>("profesor")
         val id = Profesor.idProf
+        println("**************${id}**********************")
 
-        BaseDatos.BaseDatosSQLiteHelper= SQLiteHelper(this)
+        BaseDatos.BaseDatosSQLiteHelperEstudiante= SQLiteHelper(this)
 
-        if(BaseDatos.BaseDatosSQLiteHelper != null) {
+        if(BaseDatos.BaseDatosSQLiteHelperEstudiante != null) {
             adapter = ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_1,
-                BaseDatos.BaseDatosSQLiteHelper!!.consultarEstudiante(id)
-            )
+                BaseDatos.BaseDatosSQLiteHelperEstudiante!!.consultarEstudiantesIdProfesor(id))
+                Log.e("Mostrar estudiantes con el id_Profesor --->", "$id")
+
             val listViewEstudiante = findViewById<ListView>(R.id.ltvEstudiantes)
             listViewEstudiante.adapter = adapter
             registerForContextMenu(listViewEstudiante)
@@ -80,23 +82,19 @@ class Estudiante : AppCompatActivity() {
 
             R.id.editarEstudiante-> {
 
-
                 abrirActividadConParametros(ActualizarEstudiante::class.java,estudiante!!)
-
-
                 return true
             }
 
-
             R.id.menuProfesor -> {
 
-                if(BaseDatos.BaseDatosSQLiteHelper!=null){
+                if(BaseDatos.BaseDatosSQLiteHelperEstudiante!=null){
 
                     AlertDialog.Builder(this).apply {
                         setTitle("Alerta")
                         setMessage("¿Desea eliminar el registro?")
                         setPositiveButton("Si"){ _: DialogInterface, _: Int ->
-                            BaseDatos.BaseDatosSQLiteHelper!!.eliminarEstudianteFormulario(adapter!!.getItem(posicionItem)!!.idEstudiante)
+                            BaseDatos.BaseDatosSQLiteHelperEstudiante!!.eliminarEstudianteFormulario(adapter!!.getItem(posicionItem)!!.idEstudiante)
                             adapter?.remove(adapter!!.getItem(posicionItem));
 
                         }
@@ -111,7 +109,6 @@ class Estudiante : AppCompatActivity() {
             else -> super.onContextItemSelected(item)
         }
     }
-
     fun abrirActividadConParametros(clase: Class<*>, estudiante: BEstudiante){
         val intentExplicito = Intent(
             this,
@@ -121,9 +118,6 @@ class Estudiante : AppCompatActivity() {
         startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
 
     }
-
-
-
     fun abrirActividadConParametros3(clase: Class<*>, profesor: BProfesor){
         val intentExplicito = Intent(
             this,
@@ -133,15 +127,4 @@ class Estudiante : AppCompatActivity() {
         startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO3)
 
     }
-
-
-
-    fun abrirActividad(clase: Class<*>){
-        val intentExplicito = Intent(
-            this,
-            clase
-        )
-        startActivity(intentExplicito)
-    }
-
 }
