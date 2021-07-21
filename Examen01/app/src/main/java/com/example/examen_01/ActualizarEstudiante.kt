@@ -11,16 +11,18 @@ import com.example.myapplication.BaseDatos
 import com.example.myapplication.SQLiteHelper
 
 class ActualizarEstudiante : AppCompatActivity() {
-    var CODIGO_RESPUESTA_INTENT_EXPLICITO = 404
+    private lateinit var fechaR: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actualizar_estudiante)
 
         val nombreEstudiante = findViewById<EditText>(R.id.txtEditarNombreEstudiante)
-        val edadEstudiante = findViewById<EditText>(R.id.txtEditarEdad)
+        val EditarEdadEstudiante = findViewById<EditText>(R.id.txtEditarEdadEstudiante)
         val matricula = findViewById<EditText>(R.id.txtEditarMatricula)
-        val fechaR = findViewById<EditText>(R.id.txtEditarFecha)
+        fechaR = findViewById<EditText>(R.id.txtEditarFecha)
+        fechaR.setOnClickListener{ShowDatePickerDialog()}
+
         val calificacion = findViewById<EditText>(R.id.txtEditarCalificacion)
 
         val IdEst = intent.getParcelableExtra<BEstudiante>("estudiante")
@@ -29,7 +31,7 @@ class ActualizarEstudiante : AppCompatActivity() {
         BaseDatos.BaseDatosSQLiteHelper= SQLiteHelper(this)
 
         nombreEstudiante.setText(IdEst?.nombreEstudiante)
-        //edadEstudiante.setText(IdEst?.Edad.toString().toInt())
+        EditarEdadEstudiante.setText(IdEst?.Edad.toString())
         matricula.setText(IdEst?.segunda)
         fechaR.setText(IdEst?.fechaRegistro)
         calificacion.setText(IdEst?.Calificacion.toString())
@@ -37,18 +39,18 @@ class ActualizarEstudiante : AppCompatActivity() {
         val btnGuardarEstudiante = findViewById<Button>(R.id.btnGuardarEst)
         btnGuardarEstudiante.setOnClickListener {
             val nombre = nombreEstudiante.text.toString()
-            val edadEst = edadEstudiante.text.toString().toInt()
+            val edadEst = EditarEdadEstudiante.text.toString().toInt()
             val matriiculaEst = matricula.text.toString()
             val fechaRe = fechaR.text.toString()
             val calificacionEst = calificacion.text.toString().toDouble()
 
-            if(nombreEstudiante.text.isNotBlank()&&edadEstudiante.text.isNotBlank() && matricula.text.isNotBlank()
+            if(nombreEstudiante.text.isNotBlank()&&EditarEdadEstudiante.text.isNotBlank() && matricula.text.isNotBlank()
                 &&fechaR.text.isNotBlank()&&calificacion.text.isNotBlank()){
                 BaseDatos.BaseDatosSQLiteHelper!!.actualizarEstudianteFormulario(nombre,
                     edadEst, matriiculaEst, fechaRe, calificacionEst, id_EStudiante)
 
                 nombreEstudiante.text.clear()
-                edadEstudiante.text.clear()
+                EditarEdadEstudiante.text.clear()
                 matricula.text.clear()
                 fechaR.text.clear()
                 calificacion.text.clear()
@@ -62,22 +64,12 @@ class ActualizarEstudiante : AppCompatActivity() {
             } }
     }
 
-    fun abrirActividad(clase: Class<*>) {
-        val intentExplicito = Intent(
-            this,
-            clase
-        )
-        startActivity(intentExplicito)
-
+    fun ShowDatePickerDialog() {
+        val datePicker = DatePickerFragment{day, month, year -> OnDateSelected(day, month, year)}
+        datePicker.show(supportFragmentManager, "datePcker")
     }
 
-    fun abrirActividadConParametros(clase: Class<*>, profesor: BProfesor, ){
-        val intentExplicito = Intent(
-            this,
-            clase
-        )
-        intentExplicito.putExtra("profesor",profesor)
-        startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
-
+    fun OnDateSelected(day:Int, month:Int, year:Int){
+        fechaR.setText("${day}/${month}/${year}")
     }
 }
