@@ -3,14 +3,29 @@ package com.example.moviles_computacion_2021_b
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.beust.klaxon.Klaxon
 import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.result.Result
 class HHttpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hhttp)
 
-        metodoGet()
+        //metodoGet()
+        metodoPost()
+    }
+
+    private fun metodoPost() {
+        val parametros: List<Pair<String, *>> = listOf(
+            "title" to "Titulo móviles",
+            "body" to "descripción móviles",
+            "userId" to 1
+        )
+
+        "http://jsonplaceholder.typicode.com/posts"
+            .httpPost(parametros)
+
     }
 
     fun metodoGet(){
@@ -25,6 +40,12 @@ class HHttpActivity : AppCompatActivity() {
                             val getString = result.get()
                             Log.i("http-klaxon", "${getString}")
 
+                            //"http://jsonplaceholder.typicode.com/posts/1" 1
+                            //"http://jsonplaceholder.typicode.com/posts/1" muchos
+
+                            val post = Klaxon()
+                                .parse<IPostHttp>(getString)
+                            Log.i("http-klaxon", "${post?.body}")
                     }
                 }
             }
