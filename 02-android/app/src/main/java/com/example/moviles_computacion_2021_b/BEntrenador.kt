@@ -4,7 +4,8 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class BEntrenador (val nombre: String?,
-                   val descripcion: String?) :Parcelable{
+                   val descripcion: String?,
+                    val liga: DLiga? = null,) :Parcelable{
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),

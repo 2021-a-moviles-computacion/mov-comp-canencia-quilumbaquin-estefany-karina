@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Movilescomputacion2021b">
+        <activity android:name=".GRecycleView"></activity>
         <activity android:name=".Usuario">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
