@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoG2">
-        <activity android:name=".PruebaFechaHora"></activity>
+        <activity android:name=".registrarUsuario"></activity>
+        <activity android:name=".CalendarioView" />
+        <activity android:name=".PruebaFechaHora" />
         <activity android:name=".PruebaFecha_Hora" />
         <activity android:name=".MainActivity">
             <intent-filter>
