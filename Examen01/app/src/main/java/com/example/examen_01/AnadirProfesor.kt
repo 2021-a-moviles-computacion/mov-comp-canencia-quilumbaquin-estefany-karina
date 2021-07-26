@@ -50,33 +50,4 @@ class AnadirProfesor : AppCompatActivity() {
     }
     }
 
-   /* fun anadirUsuario(){
-        val nombre = nombreProfesor.text.toString()
-        val materia = materia.text.toString()
-        val edadProfesor = edadProfesor.text.toString().toInt()
-        val EstadoCivil = estadoCivil.text.toString()
-        val telefono = telefono.text.toString()
-
-        if(nombre.isEmpty() || materia.isEmpty() ){
-            Toast.makeText(this,"ingrese el requerimiento", Toast.LENGTH_SHORT).show()
-        }else{
-            val estado = sqliteHelper.crearProfesor(nombre, materia, edadProfesor, EstadoCivil, telefono)
-
-            if (estado != null){
-                Toast.makeText(this,"usuario añadido", Toast.LENGTH_SHORT).show()
-                borrarTexto()
-                Log.e("añadir","${nombre} ---> ${materia}")
-            }else{
-                Toast.makeText(this,"usuario no añadido", Toast.LENGTH_SHORT).show()
-
-            }
-        }
-    }
-
-    fun borrarTexto(){
-        nombreProfesor.setText("")
-        materia.setText("")
-        edadProfesor.setText("")
-        estadoCivil.setText("")
-        telefono.setText("")
-    }*/
+  

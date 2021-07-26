@@ -14,6 +14,7 @@ import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 
 class BListView : AppCompatActivity() {
+
     var posicionItemSeleccionado = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
