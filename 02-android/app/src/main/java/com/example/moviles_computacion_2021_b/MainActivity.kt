@@ -34,6 +34,16 @@ class MainActivity : AppCompatActivity() {
             abrirActividadConParametros(GRecycleView::class.java)
         }
 
+        //     Botón para ir a la Actividad HHttp Activity
+
+        val btnIrHttp = findViewById<Button>(
+            R.id.btn_ir_http
+        )
+
+        btnIrHttp.setOnClickListener{
+            abrirActividad(HHttpActivity::class.java)
+        }
+
 //     Botón para ir a la Actividad ACicloVida
 
         val btnIrBListView = findViewById<Button>(
