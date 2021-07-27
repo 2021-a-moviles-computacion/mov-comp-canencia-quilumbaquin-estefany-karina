@@ -1,0 +1,2 @@
+rootProject.name = "Disney Plus"
+include ':app'
