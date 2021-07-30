@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 
-class CategoriaItemAdapter(private val contex: Context, private val categoriaItem: List<catergoriaItem>): RecyclerView.Adapter<CategoriaItemAdapter.CategoryItemViewHolder>() {
+class CategoriaItemAdapter(private val contex: Context, private val categoriaItem: List<catergoriaItem>):
+    RecyclerView.Adapter<CategoriaItemAdapter.CategoryItemViewHolder>() {
 
     class CategoryItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageItem: ImageView
