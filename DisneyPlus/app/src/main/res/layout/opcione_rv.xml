@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:background="#02082B">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvGeneral"
-        android:layout_width="383dp"
-        android:layout_height="242dp"
+        android:layout_width="382dp"
+        android:layout_height="604dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/img"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img" />
 
@@ -19,8 +20,16 @@
         android:id="@+id/img"
         android:layout_width="380dp"
         android:layout_height="70dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/rvSlider"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="@+id/rvSlider"
+        app:layout_constraintTop_toBottomOf="@+id/rvSlider" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSlider"
+        android:layout_width="409dp"
+        android:layout_height="231dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

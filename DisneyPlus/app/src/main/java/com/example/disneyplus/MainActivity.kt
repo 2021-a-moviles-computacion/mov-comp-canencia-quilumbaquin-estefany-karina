@@ -18,12 +18,12 @@ class MainActivity : AppCompatActivity() {
 
 
         //Opciones Disney Pixar
-        val OpcionesCategorias: MutableList<ItemOptio> = ArrayList()
-        OpcionesCategorias.add(ItemOptio(R.drawable.disney))
-        OpcionesCategorias.add(ItemOptio(R.drawable.disney))
-        OpcionesCategorias.add(ItemOptio(R.drawable.marvel))
-        OpcionesCategorias.add(ItemOptio(R.drawable.disney))
-        OpcionesCategorias.add(ItemOptio(R.drawable.disney))
+        val OpcionesCategorias: MutableList<ItemOpcion> = ArrayList()
+        OpcionesCategorias.add(ItemOpcion(R.drawable.disney))
+        OpcionesCategorias.add(ItemOpcion(R.drawable.disney))
+        OpcionesCategorias.add(ItemOpcion(R.drawable.marvel))
+        OpcionesCategorias.add(ItemOpcion(R.drawable.disney))
+        OpcionesCategorias.add(ItemOpcion(R.drawable.disney))
 
 
         //Peliculas
@@ -47,11 +47,15 @@ class MainActivity : AppCompatActivity() {
         val categorias: MutableList<Categorias> = ArrayList()
         categorias.add(Categorias("Recomendaciones para ti",ItemPelicula))
         categorias.add(Categorias("Exitos de cine",ItemPelicula2))
-        categorias.add(Categorias(" para ti",ItemPelicula3))
-        categorias.add(Categorias("Recomendaciones  ti",ItemPelicula2))
+        categorias.add(Categorias("Recomendaciones para ti",ItemPelicula))
+        categorias.add(Categorias("Exitos de cine",ItemPelicula2))
+
+        val slider: MutableList<slider> = ArrayList()
+        slider.add(slider(" para ti",(R.drawable.marvel)))
+        slider.add(slider("Exitos de cine",(R.drawable.avengers)))
 
         val recycle: MutableList<RecycleViewClass> = ArrayList()
-        recycle.add(RecycleViewClass(OpcionesCategorias,categorias))
+        recycle.add(RecycleViewClass(slider,OpcionesCategorias,categorias))
 
         setCategoriasRecycleView(recycle)
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemOpctionAdapter(private val context: Context, private val itemoption: List<ItemOptio>):
+class ItemOpctionAdapter(private val context: Context, private val itemoption: List<ItemOpcion>):
     RecyclerView.Adapter<ItemOpctionAdapter.CategoryItemViewHolder>() {
     class CategoryItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
