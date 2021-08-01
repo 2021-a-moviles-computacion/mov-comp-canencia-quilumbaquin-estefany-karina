@@ -13,7 +13,7 @@ class CategoriaItemAdapter(private val contex: Context, private val categoriaIte
     class CategoryItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val imageItem: ImageView
         init {
-            imageItem = itemView.findViewById(R.id.itemPelicula)
+            imageItem = itemView.findViewById(R.id.itemPelícula)
         }
     }
 

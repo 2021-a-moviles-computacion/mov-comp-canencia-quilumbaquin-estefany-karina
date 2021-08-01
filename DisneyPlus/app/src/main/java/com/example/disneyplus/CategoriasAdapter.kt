@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.disneyplus.RecycleViewAdapter.*
 
-class RecycleViewAdapter(private val context: Context, private val Categorias: List<Categorias>):
-    RecyclerView.Adapter<RecycleViewAdapter.MViewHolder>() {
+class CategoriasAdapter(private val context: Context, private val Categorias: List<Categorias>
+):
+    RecyclerView.Adapter<CategoriasAdapter.MViewHolder>() {
         class MViewHolder(ItemView: View): RecyclerView.ViewHolder(ItemView){
             var tituloCategoria: TextView
             var itemRecycle: RecyclerView
@@ -21,7 +21,7 @@ class RecycleViewAdapter(private val context: Context, private val Categorias: L
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MViewHolder {
-        return MViewHolder(LayoutInflater.from(context).inflate(R.layout.recicly_view_row_item, parent, false))
+        return MViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recicly_view_row_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: MViewHolder, position: Int) {
@@ -35,7 +35,8 @@ class RecycleViewAdapter(private val context: Context, private val Categorias: L
 
     private fun setCatItemRecycler(recyclerView: RecyclerView, catergoriaItem: List<catergoriaItem>){
         val itemRecyclerAdapter = CategoriaItemAdapter(context, catergoriaItem)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = itemRecyclerAdapter
     }
+
 }
