@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.ImageSlider
+import com.squareup.picasso.Picasso
 
 class imageSliderAdapter(private val context: Context, private val slider: List<slider>):
     RecyclerView.Adapter<imageSliderAdapter.SliderViewHolder>(){
@@ -24,7 +25,8 @@ class imageSliderAdapter(private val context: Context, private val slider: List<
     }
 
     override fun onBindViewHolder(holder: SliderViewHolder, position: Int) {
-        holder.imagen.setImageResource(slider[position].imagen)
+       // holder.imagen.setImageResource(slider[position].imagen)
+        Picasso.get().load(slider[position].imagen).into(holder.imagen)
     }
 
     override fun getItemCount(): Int {

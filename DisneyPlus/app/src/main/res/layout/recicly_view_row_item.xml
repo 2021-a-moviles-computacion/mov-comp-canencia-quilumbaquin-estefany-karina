@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#02082B">
+    android:background="#0C0E1C">
 
     <TextView
         android:id="@+id/txtNombreCat"
         android:layout_width="270dp"
         android:layout_height="19dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="4dp"
         android:fontFamily="sans-serif-medium"
         android:text="TextView"
@@ -22,13 +23,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_ItemPeliculas"
-        android:layout_width="406dp"
-        android:layout_height="195dp"
+        android:layout_width="388dp"
+        android:layout_height="188dp"
+        android:layout_marginLeft="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreCat"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

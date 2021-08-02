@@ -1,3 +1,3 @@
 package com.example.disneyplus
 
-class slider (var descipción:String, var imagen: Int)
+class slider (var descipción:String, var imagen: String)
