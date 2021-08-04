@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         //Opciones Disney Pixar
         val OpcionesCategorias: MutableList<ItemOpcion> = ArrayList()
         OpcionesCategorias.add(ItemOpcion(R.drawable.disney))
-        OpcionesCategorias.add(ItemOpcion(R.drawable.disney))
+        OpcionesCategorias.add(ItemOpcion(R.drawable.pixar))
         OpcionesCategorias.add(ItemOpcion(R.drawable.marvel))
-        OpcionesCategorias.add(ItemOpcion(R.drawable.disney))
-        OpcionesCategorias.add(ItemOpcion(R.drawable.disney))
+        OpcionesCategorias.add(ItemOpcion(R.drawable.star_wars))
+        OpcionesCategorias.add(ItemOpcion(R.drawable.national))
 
 
         //Peliculas
