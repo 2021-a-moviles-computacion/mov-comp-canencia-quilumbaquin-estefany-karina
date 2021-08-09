@@ -34,13 +34,13 @@ class ItemOpctionAdapter(private val context: Context, private val itemoption: L
                 var intent = Intent(context, OpcionPixar::class.java )
                 context.startActivity(intent)}
             if(position==2){
-                var intent = Intent(context, OpcionPixar::class.java )
+                var intent = Intent(context, Marvel::class.java )
                 context.startActivity(intent)}
             if(position==3){
-                var intent = Intent(context, OpcionPixar::class.java )
+                var intent = Intent(context, StarWars::class.java )
                 context.startActivity(intent)}
             if(position==4){
-                var intent = Intent(context, OpcionPixar::class.java )
+                var intent = Intent(context, NationalGeographic::class.java )
                 context.startActivity(intent)}
         }
     }
