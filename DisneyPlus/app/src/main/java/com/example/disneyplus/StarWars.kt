@@ -25,7 +25,7 @@ class StarWars : AppCompatActivity() {
         Series.add(catergoriaItem(1, "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mandalorian-poster-1567627399.jpg"))
         Series.add(catergoriaItem(1, "https://es.web.img2.acsta.net/pictures/15/11/17/13/30/119627.jpg"))
         Series.add(catergoriaItem(1, "https://static.wikia.nocookie.net/esstarwars/images/f/ff/The_Clone_Wars_film_poster.jpg/revision/latest?cb=20080828154132"))
-        Series.add(catergoriaItem(1, "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2018/04/increibles.jpg?itok=vZzCSlvS"))
+        Series.add(catergoriaItem(1, "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mandalorian-poster-1567627399.jpg"))
         Series.add(catergoriaItem(1, "https://static.wikia.nocookie.net/esstarwars/images/f/fd/BadBatchPosterLA.jpg/revision/latest?cb=20210423032309"))
         Series.add(catergoriaItem(1, "https://lumiere-a.akamaihd.net/v1/images/p_insideout_19751_af12286c.jpeg"))
         Series.add(catergoriaItem(1, "https://pics.filmaffinity.com/Star_Wars_The_Clone_Wars_La_temporada_final_Miniserie_de_TV-429429469-large.jpg"))
@@ -44,10 +44,21 @@ class StarWars : AppCompatActivity() {
         cortos.add(catergoriaItem(1, "https://i.pinimg.com/736x/00/86/56/0086560b727e09aa2036b34682a8ea15.jpg"))
         cortos.add(catergoriaItem(1, "https://gianninabraschi.files.wordpress.com/2011/10/empireofdreamsspanish11.jpg"))
 
+        val aLoLargoAños: MutableList<catergoriaItem> = ArrayList()
+        aLoLargoAños.add(catergoriaItem(1, "https://www.libreriaespanola.com/web/image/product.product/7035/image"))
+        aLoLargoAños.add(catergoriaItem(1, "https://m.media-amazon.com/images/I/71C+KwExtCL._SL1212_.jpg"))
+        aLoLargoAños.add(catergoriaItem(1, "https://static.wikia.nocookie.net/cinedeafinesdelsigloxx/images/d/d1/Star_Wars.jpg/revision/latest?cb=20120709214832&path-prefix=es"))
+        aLoLargoAños.add(catergoriaItem(1, "https://clarovideocdn7.clarovideo.net/PELICULAS/STARWARSEPISODEIVANEWHOPE/EXPORTACION_WEB/SS/STARWARSEPISODEIVANEWHOPEWVERTICAL.jpg?size=200x300"))
+        aLoLargoAños.add(catergoriaItem(1, "https://static.wikia.nocookie.net/esstarwars/images/1/14/Jguerra.jpg/revision/latest/top-crop/width/360/height/450?cb=20120505182758"))
+        aLoLargoAños.add(catergoriaItem(1, "https://es.web.img3.acsta.net/pictures/21/05/20/17/43/0503384.jpg"))
+
         val categorias: MutableList<Categorias> = ArrayList()
         categorias.add(Categorias("Series",Series))
         categorias.add(Categorias("Películas",Peliculas))
         categorias.add(Categorias("Cortos y especiales",cortos))
+        categorias.add(Categorias("Ahsoka Tano: Episodios esenciales",Series))
+        categorias.add(Categorias("Star Wars a lo largo de los años",aLoLargoAños))
+
 
         setCategoriasRecycleView(categorias)
     }
