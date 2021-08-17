@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "529021106371",
+    "project_id": "mov-com-2021-e-can-qui",
+    "storage_bucket": "mov-com-2021-e-can-qui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529021106371:android:34b95c087afa25be9a4a76",
+        "android_client_info": {
+          "package_name": "com.example.firebaseuno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529021106371-fpdr5iv5lm96d5gu797qbf36hbme3vil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT99cQeNXMx5NVvIkxkqnhljcJhJ_55pY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529021106371-fpdr5iv5lm96d5gu797qbf36hbme3vil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
