@@ -35,7 +35,7 @@
         android:layout_width="135dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:text="Restaurantes"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,15 +69,16 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.485" />
+        app:layout_constraintTop_toBottomOf="@+id/et_cantidad_producto"
+        app:layout_constraintVertical_bias="0.083" />
 
     <ListView
         android:id="@+id/lv_lista_productos"
         android:layout_width="352dp"
         android:layout_height="179dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv" />
 

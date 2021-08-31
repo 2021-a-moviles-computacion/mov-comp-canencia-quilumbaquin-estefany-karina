@@ -47,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Productos"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btn_logout"
         app:layout_constraintEnd_toEndOf="@+id/btn_restaurante"
         app:layout_constraintStart_toStartOf="@+id/btn_restaurante"
@@ -59,8 +60,20 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
         android:text="Restaurante"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btn_producto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_ordenes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="Ordenes"
+        app:layout_constraintBottom_toTopOf="@+id/btn_restaurante"
+        app:layout_constraintEnd_toEndOf="@+id/btn_restaurante"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/btn_restaurante" />
 </androidx.constraintlayout.widget.ConstraintLayout>
