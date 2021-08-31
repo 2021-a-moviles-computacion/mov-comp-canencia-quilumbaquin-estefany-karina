@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.example.firebaseuno.dto.FirestoreUsuarioDto
@@ -22,9 +23,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val botonLogin = findViewById<Button>(R.id.btn_login)
-
         botonLogin.setOnClickListener {
             llamarLoginUsuario()
+        }
+
+        val botonLogout = findViewById<Button>(R.id.btn_login)
+        botonLogout.setOnClickListener {
+            solicitarSalirDelAplicativo()
+        }
+
+        val botonProducto =  findViewById<Button>(R.id.btn_producto)
+        botonProducto.setOnClickListener {
+            val intent = Intent(
+                this,
+                CProducto::class.java
+            )
+            startActivity(intent)
         }
     }
 
@@ -76,8 +90,7 @@ class MainActivity : AppCompatActivity() {
                 val referencia = db.collection("usuario")
                     .document(usuarioLocal.email.toString())// /usuario/a@---com
 
-                referencia
-                    .get()
+                referencia.get()
                     .addOnSuccessListener {
                     val usuarioCargado: FirestoreUsuarioDto?=
                         it.toObject(FirestoreUsuarioDto::class.java)
@@ -88,8 +101,11 @@ class MainActivity : AppCompatActivity() {
                         usuarioCargado.email,
                         usuarioCargado.roles
                     )
+                            setearBienvenida()
+
                         }
-                    Log.i("firebase-firestore", "Usuaio cargado")
+
+                        Log.i("firebase-firestore", "Usuario cargado")
                 }
                     .addOnFailureListener {
                         Log.i("firebase-firestore", "Fallo cargar usuario")
@@ -100,17 +116,26 @@ class MainActivity : AppCompatActivity() {
 
     fun setearBienvenida(){
         val txtViewBienvenida = findViewById<TextView>(R.id.tv_bienvenida)
+        val botonlogin = findViewById<Button>(R.id.btn_login)
+        val botonlogout = findViewById<Button>(R.id.btn_logout)
+        val botonProducto = findViewById<Button>(R.id.btn_producto)
         if(BAuthUsuario.usuario != null){
             txtViewBienvenida.text = "Bienvenido ${BAuthUsuario.usuario?.email}"
+            botonlogin.visibility = View.INVISIBLE
+            botonlogout.visibility = View.VISIBLE
+            botonProducto.visibility = View.VISIBLE
         }else{
             txtViewBienvenida.text = "Ingresa al aplicativo"
+            botonlogin.visibility = View.VISIBLE
+            botonlogout.visibility = View.INVISIBLE
+            botonProducto.visibility = View.INVISIBLE
         }
     }
 
     fun registrarUsuarioPorPrimeraVez(usuario: IdpResponse){
         val usuarioLogeado = FirebaseAuth.getInstance().getCurrentUser()
         if(usuario.email != null && usuarioLogeado !=null){
-            //roles: ["usuairo", "admin"]
+            //roles: ["usuario", "admin"]
             val db = Firebase.firestore
             val rolesUsuario = arrayListOf("usuario")
             val identificadorUsuario = usuario.email
@@ -136,5 +161,13 @@ class MainActivity : AppCompatActivity() {
         }else{
             Log.i("firebase-login", "ERROR")
         }
+    }
+
+    fun solicitarSalirDelAplicativo(){
+        AuthUI.getInstance().signOut(this)
+            .addOnCompleteListener {
+                BAuthUsuario.usuario=null
+                setearBienvenida()
+            }
     }
 }
