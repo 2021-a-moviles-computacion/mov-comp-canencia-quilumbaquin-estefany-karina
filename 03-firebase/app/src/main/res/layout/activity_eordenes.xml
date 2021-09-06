@@ -33,13 +33,13 @@
         android:layout_width="135dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="36dp"
         android:text="Restaurantes"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/sp_restaurantes"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Spinner
         android:id="@+id/sp_restaurantes"
@@ -62,10 +62,9 @@
     <ListView
         android:id="@+id/lv_lista_productos"
         android:layout_width="391dp"
-        android:layout_height="211dp"
-        android:layout_marginTop="48dp"
+        android:layout_height="238dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv">
 
@@ -96,7 +95,7 @@
         android:id="@+id/tv_total"
         android:layout_width="184dp"
         android:layout_height="49dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:hint="TOTAL"
         android:textAlignment="center"
         android:textSize="24sp"
@@ -139,4 +138,15 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_seleccionar_restaurante" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="ORDENES"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
