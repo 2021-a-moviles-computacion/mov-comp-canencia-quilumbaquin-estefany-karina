@@ -30,6 +30,8 @@ class EOrdenes : AppCompatActivity() {
         val botonAdd = findViewById<Button>(R.id.btn_anadir_lista_producto)
         val listViewProducto = findViewById<ListView>(R.id.lv_lista_productos)
         var totalFinal = 0.0
+        val btnOrden = findViewById<Button>(R.id.btn_completar_pedido)
+
         spinnerRestaurante = findViewById(R.id.sp_restaurantes)
         spinnerProducto = findViewById(R.id.sp_producto)
 
@@ -65,6 +67,10 @@ class EOrdenes : AppCompatActivity() {
                 adaptadorListView.notifyDataSetChanged()
                 cantidad.text.clear()
             }
+        }
+
+        btnOrden.setOnClickListener {
+
         }
     }
 
