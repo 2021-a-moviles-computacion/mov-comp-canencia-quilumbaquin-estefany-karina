@@ -5,10 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class DRestaurante : AppCompatActivity() {
+
+    var query: Query? =null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drestaurante)
@@ -17,11 +23,28 @@ class DRestaurante : AppCompatActivity() {
         botonCrear.setOnClickListener { crearRestaurante() }
 
         val botonDatosPueba = findViewById<Button>(R.id.btn_datos_prueba)
-        botonDatosPueba.setOnClickListener { crearDatosPrueba() }
+        botonDatosPueba.setOnClickListener {
+            //crearDatosPrueba()
+            transaccion()}
 
         val botonConsultar = findViewById<Button>(R.id.btn_consultar)
         botonConsultar.setOnClickListener { consultar() }
 
+    }
+
+    private fun transaccion() {
+        val db = Firebase.firestore
+        val referenciaCities = db.collection("cities").document("SF")
+        db.runTransaction {
+            transaccion->
+            val documentoActual = transaccion.get(referenciaCities)
+            val poblacion = documentoActual.getDouble("population")
+            if(poblacion != null){
+            val nuevaPOblación=poblacion+1
+                transaccion.update(referenciaCities,"population",nuevaPOblación)
+            }
+        }.addOnSuccessListener { Log.i("transaccion","Transacción completada") }
+            .addOnFailureListener { Log.i("Transacción", "ERROR") }
     }
 
     private fun crearDatosPrueba() {
@@ -78,10 +101,7 @@ class DRestaurante : AppCompatActivity() {
         )
         cities.document("BJ").set(data5)
     }
-
     private fun consultar() {
-        val db = Firebase.firestore
-        val citiesRef = db.collection("cities")
 
         /*citiesRef.document("BJ")
             .get().addOnSuccessListener { Log.i("consultas", "${it.data}") }
@@ -93,16 +113,16 @@ class DRestaurante : AppCompatActivity() {
                     Log.i("consultas","${ciudad.data}")
                 }
             }
-            .addOnFailureListener {  }*/
+            .addOnFailureListener {  }
 
         //Buscar por 2 o mas elementos campo '==' 'array-contains'
-        /*citiesRef.whereEqualTo("capital", false)
+        citiesRef.whereEqualTo("capital", false)
             .whereArrayContainsAny("regions", arrayListOf("socal","norcal")).get()
             .addOnSuccessListener {
                 for (ciudad in it) {
                     Log.i("consultas", "== array-contains ${ciudad.data}")
                 }
-                }*/
+                }
         //temos q sacar un indice para los campos
 
         citiesRef.whereEqualTo("capital", true)
@@ -111,6 +131,43 @@ class DRestaurante : AppCompatActivity() {
                 for (ciudad in it){
                     Log.i("consultas", "== array-contains ${ciudad.data}")}
             }
+
+        citiesRef
+            .whereEqualTo("capital", false)
+            .whereLessThanOrEqualTo("population", 4000000)
+            .orderBy("population", Query.Direction.DESCENDING).get()
+            .addOnSuccessListener {
+                for (ciudad in it){
+                    Log.i("consultas", "== array-contains ${ciudad.data}")
+                }
+            }*/
+        val db = Firebase.firestore
+        val citiesRef = db.collection("cities").orderBy("population").limit(2)
+        var tarea: Task<QuerySnapshot>? =null
+
+        if(query == null){
+            tarea = citiesRef.get()
+        }else{
+            tarea = query!!.get()
+        }
+        if (tarea !=null) {
+            tarea.addOnSuccessListener { documentSnapshots ->
+                guardarQuery(documentSnapshots, citiesRef)
+                for(ciudad in documentSnapshots){
+                    Log.i("consultas", "${ciudad.data}")
+                }
+            }.addOnFailureListener {
+                Log.i("consultas","Error: ${it}")}
+        }
+    }
+
+    fun guardarQuery(documentSnapshots: QuerySnapshot, citiesRef: Query) {
+        if (documentSnapshots.size() > 0){
+            val ultimoDocumento = documentSnapshots.documents[documentSnapshots.size()-1]
+            query = citiesRef.startAfter(ultimoDocumento)
+        }else{
+
+        }
     }
 
     private fun crearRestaurante() {
