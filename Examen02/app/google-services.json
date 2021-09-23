@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "249288355928",
+    "project_id": "examen2b-estefany",
+    "storage_bucket": "examen2b-estefany.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249288355928:android:5fe4ea53073cf4c5229a2d",
+        "android_client_info": {
+          "package_name": "com.example.examen02"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249288355928-jcj95gqctc6fd4kfvfqfk2evr6mf78sk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtdv25SB5aihrC0ZqaKiVwDuD0XJBDx-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249288355928-jcj95gqctc6fd4kfvfqfk2evr6mf78sk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249288355928:android:404d8816f0222d0e229a2d",
+        "android_client_info": {
+          "package_name": "com.example.examen2b"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249288355928-jcj95gqctc6fd4kfvfqfk2evr6mf78sk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtdv25SB5aihrC0ZqaKiVwDuD0XJBDx-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249288355928-jcj95gqctc6fd4kfvfqfk2evr6mf78sk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

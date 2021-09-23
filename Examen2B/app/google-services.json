@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "790912023408",
+    "project_id": "examen2b-estefany-canencia",
+    "storage_bucket": "examen2b-estefany-canencia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790912023408:android:5383b6bc3266e772fa2db5",
+        "android_client_info": {
+          "package_name": "com.example.examen2b"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790912023408-e7blpgnr8ic4frrqm3d9vq2j9bsn5h8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVBrXQ5ZC8A7fh6hx0ejO9MbQOLdHbujU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790912023408-e7blpgnr8ic4frrqm3d9vq2j9bsn5h8n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
