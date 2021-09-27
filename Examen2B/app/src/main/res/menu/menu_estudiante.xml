@@ -6,4 +6,8 @@
     <item
         android:id="@+id/menuProfesor"
         android:title="Eliminar" />
+
+    <item
+        android:id="@+id/mapa"
+        android:title="Mapa" />
 </menu>

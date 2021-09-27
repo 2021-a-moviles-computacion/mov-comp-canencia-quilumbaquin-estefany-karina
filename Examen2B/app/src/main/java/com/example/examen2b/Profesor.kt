@@ -72,7 +72,7 @@ class Profesor : AppCompatActivity() {
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
         val id = info.position
         posicionItem = id
-        idProf = "${adapter!!.getItem(posicionItem)!!.nombreProfesor.toString()}-${adapter!!.getItem(posicionItem)!!.materia.toString()}"
+        idProf = "${adapter!!.getItem(posicionItem)!!.nombreProfesor.toString()}"
         nombrePro = adapter!!.getItem(posicionItem)!!.nombreProfesor.toString()
     }
 
@@ -97,12 +97,12 @@ class Profesor : AppCompatActivity() {
                     setPositiveButton("Si"){ _: DialogInterface, _: Int ->
                         val db = Firebase.firestore
                         var refCasa = db.collection("estudiante")
-                        Estudiante.arregloEst.forEach {
-                            db.collection("profesor").document("${Aprofesor!!.nombreProfesor}-${Aprofesor!!.materia}")
-                                .collection("estudiante").document("${it.nombreEstudiante}-${it.fechaRegistro}") .delete()
+                        Estudiante.arregloEstudiante1.forEach {
+                            db.collection("profesor").document("${Aprofesor!!.nombreProfesor}")
+                                .collection("estudiante").document("${it.nombreEstudiante}") .delete()
                         }
 
-                        db.collection("profesor").document("${Aprofesor!!.nombreProfesor}-${Aprofesor!!.materia}").delete()
+                        db.collection("profesor").document("${Aprofesor!!.nombreProfesor}").delete()
                         adapter?.remove(adapter!!.getItem(posicionItem));
                     }
                     setNegativeButton("No", null)
@@ -113,6 +113,9 @@ class Profesor : AppCompatActivity() {
             R.id.menuEstudiantes -> {
 
                 if (Aprofesor != null) {
+                    println("$idProf")
+                    println("$nombrePro")
+
                     this.startActivity(Intent(this,Estudiante::class.java).putExtra("profesor",Aprofesor))
                 }
                 return true }

@@ -16,7 +16,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Examen2B">
-        <activity android:name=".MapsEstudiante"></activity>
+        <activity android:name=".Ubicacion1"></activity>
+        <activity
+            android:name=".ubicacion"
+            android:label="@string/title_activity_ubicacion"
+            android:theme="@style/Theme.Examen2B.NoActionBar"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -29,6 +33,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".MapsEstudiante" />
         <activity android:name=".FMaps" />
         <activity android:name=".AnadirEstudiante" />
         <activity android:name=".AnadirProfesor" />

@@ -79,8 +79,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_ubicacíon"
-        app:layout_constraintVertical_bias="0.771" />
+        app:layout_constraintTop_toBottomOf="@+id/et_altitud"
+        app:layout_constraintVertical_bias="0.571" />
 
     <TextView
         android:id="@+id/textView20"
@@ -142,24 +142,43 @@
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toTopOf="@+id/textView21" />
 
-    <Spinner
-        android:id="@+id/sp_ubicacíon"
-        android:layout_width="355dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="104dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCalificacion" />
-
     <TextView
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
         android:text="Ubicación :"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/sp_ubicacíon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <EditText
+        android:id="@+id/et_latitud"
+        android:layout_width="171dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Latitud"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <EditText
+        android:id="@+id/et_altitud"
+        android:layout_width="190dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="12dp"
+        android:ems="10"
+        android:hint="Altitud"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/et_latitud"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toEndOf="@+id/et_latitud"
+        app:layout_constraintTop_toTopOf="@+id/et_latitud" />
 </androidx.constraintlayout.widget.ConstraintLayout>

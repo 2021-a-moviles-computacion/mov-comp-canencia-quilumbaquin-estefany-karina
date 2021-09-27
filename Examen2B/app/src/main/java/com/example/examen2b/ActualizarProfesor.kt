@@ -10,6 +10,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class ActualizarProfesor : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actualizar_profesor)
@@ -20,6 +21,8 @@ class ActualizarProfesor : AppCompatActivity() {
         val editarEdad = findViewById<EditText>(R.id.txtEditarEdad)
         val editarEstadoCivil = findViewById<EditText>(R.id.txtEditarEstado)
         val editarTelefono = findViewById<EditText>(R.id.txtEditarTelefono)
+
+
         val editar = findViewById<Button>(R.id.btn_editar)
 
         // obtener para editar editar valores
@@ -29,12 +32,14 @@ class ActualizarProfesor : AppCompatActivity() {
         editarEstadoCivil.setText(profesorEst.estadoCivil)
         editarTelefono.setText(profesorEst.telefono)
 
+
         editar.setOnClickListener {
             val nombre = editarNombre.text.toString()
             val materiaP = editarMateria.text.toString()
-            val edadProfesor1 = editarEdad.text.toString()
+            val edadProfesor1 = editarEdad.text.toString().toInt()
             val EstadoCivil = editarEstadoCivil.text.toString()
             val telefono1 = editarTelefono.text.toString()
+            var id=Profesor.idProf
 
             val nuevoProfesor = hashMapOf<String, Any>(
                 "nombre" to nombre,
@@ -45,13 +50,13 @@ class ActualizarProfesor : AppCompatActivity() {
             )
 
             val db = Firebase.firestore
-            val referencia = db.collection("Profesor").document("${editarNombre.text}")
+            val referencia = db.collection("profesor").document(id)
             referencia.set(nuevoProfesor).addOnSuccessListener {
-                editarNombre.text.clear()
-                editarMateria.text.clear()
-                editarEdad.text.clear()
-                editarEstadoCivil.text.clear()
-                editarTelefono.text.clear()
+                editarNombre.setText("")
+                editarMateria.setText("")
+                editarEdad.setText("")
+                editarEstadoCivil.setText("")
+                editarTelefono.setText("")
 
             }.addOnFailureListener {
 
